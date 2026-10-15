@@ -1,0 +1,1 @@
+const input=document.getElementById('filter');if(input){input.addEventListener('input',()=>{const q=input.value.trim().toLowerCase();let visible=0;document.querySelectorAll('#articles a').forEach(a=>{const show=(a.textContent+' '+a.dataset.keywords).toLowerCase().includes(q);a.hidden=!show;if(show)visible++});document.getElementById('empty').hidden=visible>0})}
