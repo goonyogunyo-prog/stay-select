@@ -42,7 +42,9 @@ fetch('../data/rakuten-matches.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw
   a.className=v.affiliate?'ss-rakuten-link ss-rakuten-pr':'ss-rakuten-link';a.dataset.rakutenLink='true';
   a.textContent=v.affiliate?'PR｜楽天トラベルでプランを見る ↗':'楽天トラベルでプランを見る（通常リンク） ↗';
   a.setAttribute('aria-label',name+'：楽天トラベルで宿泊プランを見る'+(v.affiliate?'（PR広告）':'（通常リンク）'));
+  card.dataset.booking=v.affiliate?'affiliate':'matched';
   if(!existing)area.appendChild(a);
  }
+  const form=document.getElementById('stay-filters'); if(form)form.dispatchEvent(new Event('change',{bubbles:true}));
 }).catch(e=>{console.warn('楽天トラベルの紐づけデータを読み込めませんでした',e)});
 })();
