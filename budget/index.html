@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>旅行予算・割り勘シミュレーター｜宿泊費と食費を計算｜STAY SELECT</title>
+<meta name="description" content="宿泊料金、交通費、食事代、体験費を入力して旅行の総予算と1人あたりの負担額を計算。未入力は0円扱いで無料を意味しません。">
+<link rel="canonical" href="https://goonyogunyo-prog.github.io/stay-select/budget/">
+<meta name="theme-color" content="#193b34">
+<link rel="stylesheet" href="../assets/stay-next.css?v=20261016-0828">
+<link rel="stylesheet" href="../assets/trip-budget.css?v=20261017-0225">
+<script src="../assets/trip-budget.js?v=20261017-0225" defer></script>
+</head><body class="ss"><div class="ss-topline" aria-hidden="true"></div>
+<header class="ss-header"><div class="ss-wrap ss-headrow"><a class="ss-logo" href="../">STAY <b>SELECT</b></a><nav class="ss-nav" aria-label="主要ナビゲーション"><a href="../stays/">全国の宿</a><a href="../finder/">3候補で探す</a><a href="../booking/">予約先11選（PR）</a><a href="../compare/">宿を比較</a></nav></div></header>
+<main id="main"><section class="tb-hero"><div class="ss-wrap"><span class="tb-eyebrow">TRAVEL BUDGET PLANNER</span><h1>旅の予算を、<br><em>予約前に見える化。</em></h1><p>宿泊費だけでなく、交通・食事・体験まで。金額を入力すると、旅行全体の見積もりと1人あたりの負担額を計算します。</p><div class="tb-hero-links"><a href="../stays/">全国215施設から宿を探す →</a><a href="../booking/">楽天の予約先11選を見る（PR） →</a></div></div></section>
+<div class="ss-wrap tb-shell"><div class="tb-intro"><h2>旅行費用シミュレーター</h2><p>下記は<strong>自分で入力する見積もり</strong>です。実際の宿泊料金や空室情報は自動取得しません。未入力欄は計算上0円として扱い、無料という意味ではありません。</p></div>
+<div class="tb-grid"><form id="trip-budget-form" class="tb-panel" autocomplete="off"><h3>① 旅の人数と日数</h3><div class="tb-fields">
+<label>旅行人数 <span>人</span><input id="tb-people" name="people" type="number" min="1" max="50" step="1" value="2" required inputmode="numeric"></label>
+<label>宿泊日数 <span>泊</span><input id="tb-nights" name="nights" type="number" min="1" max="30" step="1" value="1" required inputmode="numeric"></label>
+<label>部屋数 <span>室</span><input id="tb-rooms" name="rooms" type="number" min="1" max="20" step="1" value="1" required inputmode="numeric"></label>
+</div><h3>② 費用を入力</h3><p class="tb-hint">単位を確認して入力してください。例えば宿泊料金が「2人で1室2万円」なら、宿泊費に20,000円、部屋数に1を入力します。</p><div class="tb-fields">
+<label>宿泊費 <span>円／1室・1泊</span><input id="tb-room-night" name="roomNight" type="number" min="0" max="10000000" step="1" placeholder="例：20000" inputmode="numeric"></label>
+<label>交通費 <span>円／1人・往復</span><input id="tb-transport" name="transport" type="number" min="0" max="10000000" step="1" placeholder="例：8000" inputmode="numeric"></label>
+<label>食事代 <span>円／1人・1日</span><input id="tb-meals" name="meals" type="number" min="0" max="10000000" step="1" placeholder="例：3500" inputmode="numeric"></label>
+<label>体験・観光 <span>円／1人・旅行全体</span><input id="tb-activity" name="activity" type="number" min="0" max="10000000" step="1" placeholder="例：2000" inputmode="numeric"></label>
+<label>税・入湯税など <span>円／1人・1泊</span><input id="tb-tax" name="tax" type="number" min="0" max="1000000" step="1" placeholder="必要な場合に入力" inputmode="numeric"></label>
+<label>その他 <span>円／グループ全体</span><input id="tb-extra" name="extra" type="number" min="0" max="10000000" step="1" placeholder="例：駐車場代など" inputmode="numeric"></label>
+<label>予備費率 <span>％／全費用</span><input id="tb-buffer" name="buffer" type="number" min="0" max="100" step="1" value="10" inputmode="numeric"></label>
+<label>予算上限 <span>円／1人</span><input id="tb-limit" name="limit" type="number" min="0" max="10000000" step="1" placeholder="任意" inputmode="numeric"></label>
+</div><div class="tb-actions"><button type="button" id="tb-save" class="tb-btn primary">この端末に保存</button><button type="button" id="tb-reset" class="tb-btn">入力をリセット</button><button type="button" id="tb-print" class="tb-btn">結果を印刷</button></div><p id="tb-save-status" class="tb-status" role="status" aria-live="polite"></p></form>
+<section class="tb-panel tb-result" aria-labelledby="tb-result-title"><h3 id="tb-result-title">③ 予算の見積もり</h3><div class="tb-total"><span>旅行全体の合計</span><strong id="tb-total" aria-live="polite">0円</strong></div><div class="tb-per"><span>1人あたり（均等割り）</span><strong id="tb-per">0円</strong></div><p class="tb-note">人数で均等に割った目安です。大人・子どもの料金差などは反映していません。</p><div id="tb-budget-status" class="tb-limit" aria-live="polite">1人あたりの予算上限を入力すると比較できます。</div><h4>費用の内訳</h4><dl class="tb-breakdown">
+<div><dt>宿泊費</dt><dd id="tb-out-stay">0円</dd></div><div><dt>交通費</dt><dd id="tb-out-transport">0円</dd></div><div><dt>食事代</dt><dd id="tb-out-meals">0円</dd></div><div><dt>体験・観光</dt><dd id="tb-out-activity">0円</dd></div><div><dt>税・入湯税など</dt><dd id="tb-out-tax">0円</dd></div><div><dt>その他</dt><dd id="tb-out-extra">0円</dd></div><div><dt>予備費</dt><dd id="tb-out-buffer">0円</dd></div></dl><div class="tb-footnote">食事代は<strong>（宿泊数＋1日）×人数</strong>で計算します。予備費はその他の費用合計に指定率を掛けています。予約先の価格、サービス料、取消料は別途確認してください。</div><div class="tb-next"><h4>次は宿を比較しよう</h4><a href="../finder/">3候補から探す →</a><a href="../compare/">候補を比較する →</a><a href="../guides/booking-checklist.html">予約前チェックリスト →</a><a href="../booking/">楽天の予約先11選（PR） →</a></div></section></div>
+<section class="tb-faq" aria-labelledby="tb-faq-title"><h2 id="tb-faq-title">よくある確認事項</h2><details><summary>入力した金額は宿泊施設の実際の料金ですか？</summary><p>いいえ。入力値は利用者自身の見積もりです。最新の料金・空室・食事条件は必ず予約先で確認してください。</p></details><details><summary>1人あたりの費用はどう計算しますか？</summary><p>部屋数×泊数×1室1泊の宿泊費に、人数分の交通費・食事代・観光費・税などを加え、予備費を上乗せして人数で割ります。</p></details><details><summary>入力したデータは送信されますか？</summary><p>計算はブラウザ内で行い、外部に送信しません。「この端末に保存」を押した場合だけ、入力値をブラウザのローカルストレージに保存します。リセットで保存分も消去します。</p></details></section>
+</div></main><footer class="ss-footer"><div class="ss-wrap ss-footgrid"><div><a class="ss-logo" href="../">STAY <b>SELECT</b></a><p>宿泊施設を探して、予約前に条件と費用を確認する。</p><p>※掲載情報・見積もりは予約条件を保証しません。</p></div><div><a href="../stays/">全国の宿一覧</a><a href="../booking/">楽天の予約先11選（PR）</a><a href="../privacy.html">プライバシーポリシー</a><a href="../about.html">運営情報</a></div></div><div class="ss-wrap"><small>© 2026 STAY SELECT</small></div></footer></body></html>
