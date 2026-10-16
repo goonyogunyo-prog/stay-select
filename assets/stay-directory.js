@@ -1,4 +1,44 @@
-(()=>{'use strict';const form=document.getElementById('stay-filters');if(!form)return;const cards=[...document.querySelectorAll('.ss-stay')],q=document.getElementById('q'),region=document.getElementById('region'),pref=document.getElementById('pref'),kind=document.getElementById('kind'),detail=document.getElementById('detail'),booking=document.getElementById('booking'),access=document.getElementById('access'),count=document.getElementById('results-count'),empty=document.getElementById('no-results'),more=document.getElementById('load-more');let limit=24;const params=new URLSearchParams(location.search);if(params.get('region'))region.value=params.get('region');if(params.get('pref'))pref.value=params.get('pref');if(params.get('kind'))kind.value=params.get('kind');if(params.get('q'))q.value=params.get('q');if(params.get('detail'))detail.value=params.get('detail');if(params.get('booking'))booking.value=params.get('booking');if(params.get('access'))access.value=params.get('access');function run(){const text=q.value.trim().toLocaleLowerCase(),matched=cards.filter(c=>(!text||(c.dataset.search||'').toLocaleLowerCase().includes(text))&&(!region.value||c.dataset.region===region.value)&&(!pref.value||c.dataset.pref===pref.value)&&(!kind.value||c.dataset.kind===kind.value)&&(!detail.value||c.dataset.detailed===detail.value)&&(!access.value||c.dataset.access===access.value)&&(!booking.value||(booking.value==='matched'&&!!c.dataset.booking)||(booking.value==='affiliate'&&c.dataset.booking==='affiliate')));cards.forEach(c=>c.hidden=true);matched.slice(0,limit).forEach(c=>c.hidden=false);count.textContent=`${matched.length}施設が見つかりました（${Math.min(matched.length,limit)}施設を表示）`;empty.hidden=matched.length!==0;more.hidden=matched.length<=limit;const u=new URL(location.href);['region','pref','kind','q','detail','booking','access'].forEach(k=>u.searchParams.delete(k));if(region.value)u.searchParams.set('region',region.value);if(pref.value)u.searchParams.set('pref',pref.value);if(kind.value)u.searchParams.set('kind',kind.value);if(q.value.trim())u.searchParams.set('q',q.value.trim());if(detail.value)u.searchParams.set('detail',detail.value);if(booking.value)u.searchParams.set('booking',booking.value);if(access.value)u.searchParams.set('access',access.value);history.replaceState(null,'',u.pathname+(u.search||'')+u.hash)}form.addEventListener('input',()=>{limit=24;run()});form.addEventListener('change',()=>{limit=24;run()});form.addEventListener('reset',()=>setTimeout(()=>{limit=24;run()},0));more.addEventListener('click',()=>{limit+=24;run()});run()})();
+(()=>{'use strict';
+const form=document.getElementById('stay-filters');if(!form)return;
+const cards=[...document.querySelectorAll('.ss-stay[data-stay-id]')],list=document.getElementById('stay-list'),q=document.getElementById('q'),region=document.getElementById('region'),pref=document.getElementById('pref'),kind=document.getElementById('kind'),detail=document.getElementById('detail'),booking=document.getElementById('booking'),access=document.getElementById('access'),count=document.getElementById('results-count'),empty=document.getElementById('no-results'),more=document.getElementById('load-more'),sort=document.getElementById('ss-sort'),share=document.getElementById('ss-share-filter'),shareStatus=document.getElementById('ss-share-status'),shareUrl=document.getElementById('ss-share-url');
+const original=new Map(cards.map((card,i)=>[card,i]));const collator=new Intl.Collator('ja',{sensitivity:'base',numeric:true});
+const params=new URLSearchParams(location.search);const controls={region,pref,kind,q,detail,booking,access};
+for(const [key,el] of Object.entries(controls)){if(params.has(key))el.value=params.get(key)}
+const allowedSorts=new Set(['default','name','pref','matched','affiliate','detail']);
+if(sort&&allowedSorts.has(params.get('sort')))sort.value=params.get('sort');
+let limit=24;
+function order(a,b){const mode=sort?.value||'default';
+ if(mode==='name'){const c=collator.compare(a.querySelector('h2')?.textContent||'',b.querySelector('h2')?.textContent||'');if(c)return c}
+ if(mode==='pref'){const c=collator.compare(a.dataset.pref||'',b.dataset.pref||'');if(c)return c}
+ if(mode==='matched'||mode==='affiliate'){
+  const score=x=>mode==='affiliate'?Number(x.dataset.booking==='affiliate'):Number(x.dataset.booking==='matched'||x.dataset.booking==='affiliate');
+  const c=score(b)-score(a);if(c)return c;
+ }
+ if(mode==='detail'){const c=Number(b.dataset.detailed==='1')-Number(a.dataset.detailed==='1');if(c)return c}
+ return original.get(a)-original.get(b);
+}
+function run(){const text=q.value.trim().toLocaleLowerCase();const matched=cards.filter(c=>(!text||(c.dataset.search||'').toLocaleLowerCase().includes(text))&&(!region.value||c.dataset.region===region.value)&&(!pref.value||c.dataset.pref===pref.value)&&(!kind.value||c.dataset.kind===kind.value)&&(!detail.value||c.dataset.detailed===detail.value)&&(!access.value||c.dataset.access===access.value)&&(!booking.value||(booking.value==='matched'&&!!c.dataset.booking)||(booking.value==='affiliate'&&c.dataset.booking==='affiliate')));
+ matched.sort(order);cards.forEach(c=>c.hidden=true);
+ // Move matching cards in their selected order; other (hidden) cards remain in the DOM.
+ // Using a fragment keeps the original 215 cards, IDs, links and compare buttons intact.
+ const fragment=document.createDocumentFragment();matched.forEach(c=>fragment.appendChild(c));list.appendChild(fragment);
+ matched.slice(0,limit).forEach(c=>c.hidden=false);
+ count.textContent=`${matched.length}施設が見つかりました（${Math.min(matched.length,limit)}施設を表示）`;
+ empty.hidden=matched.length!==0;more.hidden=matched.length<=limit;
+ const u=new URL(location.href);for(const key of Object.keys(controls))u.searchParams.delete(key);u.searchParams.delete('sort');
+ for(const [key,el] of Object.entries(controls)){const value=el.value.trim();if(value)u.searchParams.set(key,value)}
+ if(sort&&sort.value!=='default')u.searchParams.set('sort',sort.value);
+ history.replaceState(null,'',u.pathname+u.search+u.hash);
+}
+form.addEventListener('input',()=>{limit=24;run()});form.addEventListener('change',()=>{limit=24;run()});form.addEventListener('reset',()=>setTimeout(()=>{if(sort)sort.value='default';limit=24;run()},0));
+if(sort)sort.addEventListener('change',()=>{limit=24;run()});
+more.addEventListener('click',()=>{limit+=24;run()});
+if(share)share.addEventListener('click',async()=>{
+ const url=location.href;
+ try{if(!navigator.clipboard?.writeText)throw Error('Clipboard API unavailable');await navigator.clipboard.writeText(url);shareStatus.textContent='検索条件のURLをコピーしました。';shareUrl.hidden=true}
+ catch(_){shareUrl.hidden=false;shareUrl.value=url;shareUrl.focus();shareUrl.select();shareStatus.textContent='URLを選択しました。コピーして共有してください。'}
+});
+run();})();
 
 ;(()=>{'use strict';
 const MAX=4,KEY='stayselect:compare:v1',cards=[...document.querySelectorAll('.ss-stay[data-stay-id]')];

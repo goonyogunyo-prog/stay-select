@@ -1,0 +1,10 @@
+(()=>{'use strict';
+const form=document.getElementById('bh-filters');if(!form)return;
+const cards=[...document.querySelectorAll('.bh-card')],search=document.getElementById('bh-search'),pref=document.getElementById('bh-pref'),kind=document.getElementById('bh-kind'),count=document.getElementById('bh-count'),empty=document.getElementById('bh-empty'),feedback=document.getElementById('bh-feedback');
+const KEY='stayselect:compare:v1';const MAX=4;
+function filter(){const q=search.value.trim().normalize('NFKC').toLocaleLowerCase('ja');let n=0;for(const card of cards){const hay=(card.dataset.name+' '+card.dataset.pref+' '+card.dataset.kind).normalize('NFKC').toLocaleLowerCase('ja');const show=(!q||hay.includes(q))&&(!pref.value||card.dataset.pref===pref.value)&&(!kind.value||card.dataset.kind===kind.value);card.hidden=!show;if(show)n++}count.textContent=n+'件を表示中';empty.hidden=n>0;}
+form.addEventListener('input',filter);form.addEventListener('change',filter);form.addEventListener('reset',()=>{setTimeout(filter,0)});
+for(const btn of document.querySelectorAll('.bh-save'))btn.addEventListener('click',()=>{try{const saved=JSON.parse(localStorage.getItem(KEY)||'[]');const list=Array.isArray(saved)?saved.filter(x=>typeof x==='string'):[];const id=btn.dataset.id;if(list.includes(id)){feedback.textContent='この宿は比較リストに追加済みです。';return}if(list.length>=MAX){feedback.textContent='比較リストは最大4施設です。比較ページで候補を整理してください。';return}list.push(id);localStorage.setItem(KEY,JSON.stringify(list));feedback.textContent='比較リストに追加しました（'+list.length+'/4）。比較ページで確認できます。';btn.textContent='追加済み ✓';btn.disabled=true;}catch(e){feedback.textContent='ブラウザの保存機能を使えません。比較ページから追加してください。';}});
+try{const stored=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(stored))for(const btn of document.querySelectorAll('.bh-save'))if(stored.includes(btn.dataset.id)){btn.textContent='追加済み ✓';btn.disabled=true;}}catch(e){}
+const params=new URLSearchParams(location.search);const p=params.get('pref');if(p&&[...pref.options].some(x=>x.value===p))pref.value=p;filter();
+})();
