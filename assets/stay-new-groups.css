@@ -1,0 +1,11 @@
+/* STAY SELECT | new arrivals by operator */
+.ss-new-groups{margin:18px 0 22px;padding:20px 22px;border-radius:18px;background:#f5f8f4;border:1px solid #dce9de;color:#193b34}
+.ss-new-groups h2{font-size:1.12rem;line-height:1.5;margin:0 0 6px}
+.ss-new-groups p{margin:0 0 14px;line-height:1.7;font-size:.93rem}
+#ss-new-groups-buttons{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:12px}
+.ss-new-group-chip{font:inherit;font-size:.9rem;border:1px solid #a5c6b1;background:#fff;color:#1d5140;border-radius:999px;padding:9px 14px;min-height:42px;cursor:pointer}
+.ss-new-group-chip:hover,.ss-new-group-chip[aria-pressed="true"]{background:#1d5140;color:white;border-color:#1d5140}
+.ss-new-group-chip:focus-visible{outline:3px solid #d7a65b;outline-offset:2px}
+.ss-new-group-reset{border-style:dashed}
+.ss-new-groups small{display:block;color:#52665c;line-height:1.65}
+@media(max-width:420px){.ss-new-groups{padding:15px 12px;margin:14px 0}.ss-new-group-chip{width:100%;text-align:left;overflow-wrap:anywhere}}

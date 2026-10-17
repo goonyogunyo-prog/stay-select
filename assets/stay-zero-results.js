@@ -1,4 +1,4 @@
-/* STAY SELECT | 2026-10-17 07:22 | zero-result recovery based on actual 215 cards */
+/* STAY SELECT | 2026-10-17 07:22 | zero-result recovery based on actual 405 cards */
 (()=>{'use strict';
 const form=document.getElementById('stay-filters');
 const panel=document.getElementById('ss-zero-help');

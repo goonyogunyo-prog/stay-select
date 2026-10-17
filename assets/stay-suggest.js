@@ -1,4 +1,4 @@
-/* STAY SELECT | 2026-10-17 09:21 | Search suggestions from 215 listed stays only. */
+/* STAY SELECT | 2026-10-17 09:21 | Search suggestions from 405 listed stays only. */
 (()=>{'use strict';
 const input=document.getElementById('q');
 const list=document.getElementById('ss-search-suggestions');

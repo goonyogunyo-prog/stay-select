@@ -1,0 +1,17 @@
+/* STAY SELECT | filter-aware three-stay comparison suggestions | 2026-10-17 */
+.ss-triplet{background:linear-gradient(135deg,#f3f8f5,#fff9ef);border:1px solid #d6e6df;border-radius:18px;padding:clamp(16px,3vw,24px);margin:22px 0;box-shadow:0 8px 22px rgba(14,62,47,.06)}
+.ss-triplet h2{font-size:clamp(1.16rem,3vw,1.5rem);color:#153f32;margin:0 0 8px}
+.ss-triplet p{line-height:1.7;margin:6px 0 12px;color:#3b514b}
+.ss-triplet-actions{display:flex;flex-wrap:wrap;gap:10px}
+.ss-triplet button{border:0;border-radius:11px;background:#1c5644;color:white;padding:11px 15px;font:inherit;font-weight:700;cursor:pointer}
+.ss-triplet button.secondary{background:#ecf3ee;color:#214c3c;border:1px solid #aecbbb}
+.ss-triplet button:disabled{opacity:.48;cursor:not-allowed}
+.ss-triplet button:focus-visible,.ss-triplet a:focus-visible{outline:3px solid #d18e2e;outline-offset:3px}
+.ss-triplet-results{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:0;margin:14px 0 0}
+.ss-triplet-results:empty{display:none}
+.ss-triplet-results li{min-width:0;background:white;border:1px solid #d8e5dc;border-radius:12px;padding:13px}
+.ss-triplet-results strong{display:block;overflow-wrap:anywhere;color:#143b30;line-height:1.5}
+.ss-triplet-results small{display:block;color:#536c62;margin:4px 0 9px}
+.ss-triplet-results a{color:#126349;text-underline-offset:3px}
+.ss-triplet-status{font-size:.92rem;min-height:1.4em}
+@media(max-width:700px){.ss-triplet-results{grid-template-columns:1fr}.ss-triplet-actions button{flex:1 1 100%}.ss-triplet{margin:15px 0}}

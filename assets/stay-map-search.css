@@ -1,0 +1,5 @@
+/* Search links are navigational aids, not confirmed pin locations. */
+.ss-map-note{max-width:1050px;margin:12px auto 18px;padding:10px 14px;border:1px solid #d6e3df;background:#f2f8f5;border-radius:12px;color:#38544e;font-size:.82rem;line-height:1.65}
+.ss-stay-links .ss-map-search-link{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 13px;border:1px solid #b9d4cc;border-radius:9px;color:#1e564b;background:#f1f8f5;font-weight:700;white-space:normal;overflow-wrap:anywhere}
+.ss-stay-links .ss-map-search-link:hover{background:#e1f0e9;border-color:#8ab8aa}
+@media(max-width:390px){.ss-map-note{margin:12px 0 16px;font-size:.78rem}.ss-stay-links .ss-map-search-link{max-width:100%;font-size:.84rem}}

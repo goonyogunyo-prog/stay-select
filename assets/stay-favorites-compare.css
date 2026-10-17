@@ -1,0 +1,6 @@
+/* Saved favorites -> comparison tray: one click */
+#ss-favorites-compare{padding:10px 13px;border:1px solid #3e715b;border-radius:10px;background:#eaf5ec;color:#1e4d3a;font:inherit;font-weight:700;cursor:pointer;min-height:42px}
+#ss-favorites-compare:hover{background:#d9ebdd}
+#ss-favorites-compare:focus-visible{outline:3px solid #39785a;outline-offset:3px}
+#ss-favorites-compare-status{display:block;flex-basis:100%;font-size:.86rem;line-height:1.6;color:#255741;overflow-wrap:anywhere}
+@media(max-width:430px){#ss-favorites-compare{width:100%;white-space:normal;text-align:center}}

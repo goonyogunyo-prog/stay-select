@@ -1,0 +1,17 @@
+/* STAY SELECT | readable comparison print / PDF | 2026-10-17 */
+#ss-compare-print{border:1px solid #286b60;background:#e9f5f1;color:#174c43;border-radius:9px;padding:11px 14px;font-weight:700;cursor:pointer;min-height:44px}
+#ss-compare-print:hover,#ss-compare-print:focus-visible{background:#d5eee6;outline-offset:3px}
+@media print{
+ @page{size:A4 landscape;margin:12mm}
+ html,body{background:white!important;color:#172c27!important;font:10pt/1.45 system-ui,sans-serif!important}
+ .ss-topline,.ss-header,.ss-footer,.ss-directory-hero,.ss-compare-controls,.ss-compare-actions-inline,.ss-compare-empty,.ss-quicklinks,.sb-shell button,.ss-compare-table button,.ss-compare-table .ss-compare-detail{display:none!important}
+ main,.ss-wrap,.ss-compare-shell,.ss-compare-table-scroll,.ss-compare-table{max-width:none!important;width:100%!important;overflow:visible!important;box-shadow:none!important;margin:0!important;padding:0!important}
+ .ss-compare-shell:before{content:'STAY SELECT | 宿の比較シート（料金・設備は公式サイトで要確認）';display:block;font-size:15pt;font-weight:700;border-bottom:2px solid #174c43;padding:0 0 8mm;margin-bottom:7mm}
+ .ss-compare-table{table-layout:fixed!important;border-collapse:collapse!important;font-size:9pt!important}
+ .ss-compare-table th,.ss-compare-table td{border:1px solid #8faaa3!important;padding:5px!important;word-break:break-word!important;overflow-wrap:anywhere!important;background:white!important;color:#172c27!important}
+ .ss-compare-table tr,.sb-shell section,.sb-shell .sb-card{break-inside:avoid-page}
+ #budget-comparison{display:block!important;margin-top:8mm!important;break-before:auto}
+ #budget-comparison input{border:0!important;border-bottom:1px solid #999!important;box-shadow:none!important;color:#172c27!important;background:transparent!important}
+ a{color:#174c43!important;text-decoration:underline!important}
+ a[href^='http']:after{content:''}
+ }

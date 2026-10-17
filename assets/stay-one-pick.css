@@ -1,0 +1,13 @@
+/* STAY SELECT: one-stay discovery */
+.ss-one-pick{margin:1.1rem 0;padding:1.1rem;border:1px solid #cbdcd2;border-radius:18px;background:#f3f8f5;color:#193b34}
+.ss-one-pick h2{font-size:1.18rem;margin:0 0 .45rem}
+.ss-one-pick p{line-height:1.7;margin:.4rem 0 .7rem}
+.ss-one-pick button,.ss-one-pick a{font:inherit;display:inline-block;padding:.7rem 1rem;border-radius:10px;border:1px solid #246c57;background:#246c57;color:white;cursor:pointer;text-decoration:none;max-width:100%;overflow-wrap:anywhere}
+.ss-one-pick button:disabled{opacity:.6;cursor:not-allowed}
+.ss-one-pick-result{background:#fff;border:1px solid #d7e4db;border-radius:12px;padding:1rem;margin-top:.65rem}
+.ss-one-pick-result h3{font-size:1.08rem;margin:0 0 .3rem;overflow-wrap:anywhere}
+.ss-one-pick-meta{font-size:.92rem;color:#476157}
+.ss-one-pick-actions{display:flex;flex-wrap:wrap;gap:.55rem}
+.ss-one-pick-actions button{background:white;color:#246c57}
+.ss-one-pick button:focus-visible,.ss-one-pick a:focus-visible{outline:3px solid #d0a440;outline-offset:2px}
+@media(max-width:390px){.ss-one-pick{padding:.8rem}.ss-one-pick-actions>*{width:100%;text-align:center;box-sizing:border-box}}

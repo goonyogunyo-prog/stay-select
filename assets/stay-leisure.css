@@ -1,0 +1,8 @@
+/* STAY SELECT | Leisure-first directory toggle | 2026-10-17 */
+.ss-leisure-filter{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:9px 18px;padding:16px 19px;border:1px solid #bad4c5;border-radius:15px;background:linear-gradient(110deg,#edf7ef,#fffaf0);color:#193b34}
+.ss-leisure-filter strong{font-size:.95rem}
+.ss-leisure-filter label{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-weight:700;font-size:.95rem;min-height:44px}
+.ss-leisure-filter input{width:20px;height:20px;accent-color:#255c49;cursor:pointer}
+.ss-leisure-filter small{flex:1 1 100%;line-height:1.6;font-size:.82rem;color:#536d60}
+.ss-leisure-filter :focus-visible{outline:3px solid #77b9a0;outline-offset:3px}
+@media(max-width:480px){.ss-leisure-filter{padding:13px 14px;gap:5px}.ss-leisure-filter label{font-size:.88rem}}

@@ -1,0 +1,10 @@
+/* STAY SELECT | local-only note search | 2026-10-17 */
+.ss-note-search{margin:22px 0;padding:22px 24px;background:linear-gradient(115deg,#f2f7f3,#fffaf0);border:1px solid #cddfd3;border-radius:18px;color:#193b34}
+.ss-note-search h2{margin:0 0 7px;font-size:1.22rem}.ss-note-search p{margin:5px 0 0;line-height:1.7;color:#526b61;font-size:.9rem}
+.ss-note-search-controls{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap;margin-top:15px}
+.ss-note-only{display:flex;gap:8px;align-items:center;min-height:44px;font-weight:650}.ss-note-only input{width:19px;height:19px;accent-color:#285b4b}
+.ss-note-query{display:flex;flex:1 1 230px;flex-direction:column;gap:5px;font-weight:650;font-size:.87rem}
+.ss-note-query input{width:100%;min-width:0;max-width:100%;border:1px solid #b5cfc1;border-radius:10px;padding:11px 13px;font:inherit;color:#193b34;background:white}
+#ss-note-reset{border:1px solid #b5cfc1;border-radius:10px;background:#fff;color:#193b34;cursor:pointer;padding:11px 14px;font-weight:650;min-height:44px}
+#ss-note-status{font-size:.83rem}.ss-note-search :focus-visible{outline:3px solid #8dbca3;outline-offset:3px}
+@media(max-width:480px){.ss-note-search{padding:17px 15px;margin:17px 0}.ss-note-search-controls{gap:11px}.ss-note-query{flex-basis:100%}#ss-note-reset{width:100%}}
