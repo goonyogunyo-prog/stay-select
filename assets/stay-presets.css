@@ -1,0 +1,19 @@
+/* STAY SELECT | saved searches | 2026-10-17 10:25 JST */
+.ss-presets{margin:18px 0 22px;padding:20px;border:1px solid #d8e4dd;border-radius:18px;background:#f4f9f6;color:#183b31}
+.ss-presets-head{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.ss-presets h2{font-size:20px;margin:0 0 5px;line-height:1.4}
+.ss-presets p{font-size:13px;line-height:1.65;margin:0 0 12px;color:#455e55}
+.ss-preset-count{font-size:12px;font-weight:700;border-radius:20px;padding:6px 10px;background:#e0eee5;white-space:nowrap}
+.ss-preset-editor{display:flex;align-items:stretch;gap:9px;flex-wrap:wrap}
+.ss-preset-editor label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.ss-preset-editor input{min-width:175px;flex:1 1 210px;border:1px solid #b4c8bb;background:#fff;border-radius:10px;padding:11px 12px;font-size:16px;color:#173e30}
+.ss-preset-editor button{background:#215e47;border:1px solid #215e47;color:#fff;border-radius:10px;padding:11px 17px;font-weight:700;cursor:pointer}
+.ss-preset-editor button:hover,.ss-preset-editor button:focus-visible{background:#12472f}
+.ss-preset-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:8px;margin:13px 0 0;padding:0}
+.ss-preset-row{display:flex;align-items:stretch;border:1px solid #c9dcd0;border-radius:10px;background:#fff;overflow:hidden;min-width:0}
+.ss-preset-open{flex:1;min-width:0;text-align:left;background:none;border:0;padding:11px;font-size:13px;font-weight:700;color:#20583f;cursor:pointer;overflow-wrap:anywhere}
+.ss-preset-remove{background:#fff;border:0;border-left:1px solid #e1e9e3;color:#666;font-size:12px;padding:8px 10px;cursor:pointer}
+.ss-preset-open:hover,.ss-preset-remove:hover{background:#e8f2ec}
+.ss-preset-status{min-height:1.4em;margin:8px 0 0!important;color:#20583f!important}
+.ss-presets[data-has-presets="false"] .ss-preset-list{display:none}
+@media(max-width:560px){.ss-presets{padding:15px;margin:14px 0 18px}.ss-preset-editor{flex-direction:column}.ss-preset-editor input{min-width:0;flex:auto;width:100%;box-sizing:border-box}.ss-preset-editor button{width:100%}.ss-preset-list{grid-template-columns:1fr}}

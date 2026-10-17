@@ -2,9 +2,18 @@
 const $=id=>document.getElementById(id), id=new URLSearchParams(location.search).get('id')||'';
 const fields=[['貸切風呂','private_bath'],['飲み放題・プランに含まれる飲料','drinks'],['選べる浴衣','yukata'],['ケーキ手配','cake'],['客室装飾・持ち込み','decoration'],['最寄り駅・アクセス','station'],['スーパー・買い出し','supermarket']];
 const compareKey='stayselect:compare:v1';
+const recentKey='stayselect:recent:v1';
+function rememberViewedStay(validId){
+ try{
+  let stored=[];try{stored=JSON.parse(localStorage.getItem(recentKey)||'[]')}catch(_){stored=[]}
+  const previous=Array.isArray(stored)?stored.filter(x=>typeof x==='string'&&/^stay-\d{3}$/.test(x)):[];
+  const next=[validId,...previous.filter(x=>x!==validId)].slice(0,8);
+  localStorage.setItem(recentKey,JSON.stringify(next));
+ }catch(_){/* Storage may be blocked; details still work. */}
+}
 function node(tag,text){const n=document.createElement(tag);n.textContent=String(text??'');return n}
 function safeLink(u){try{const x=new URL(u);return x.protocol==='https:'?x.href:null}catch(e){return null}}
-function validMatch(s,m){if(!m||m.stay_id!==s.id||m.name!==s.name||!/^[0-9]+$/.test(String(m.rakuten_hotel_id||'')))return null;try{const u=new URL(m.rakuten_url),segments=u.pathname.split('/').filter(Boolean);if(u.protocol!=='https:'||u.hostname!=='travel.rakuten.co.jp'||!segments.includes(String(m.rakuten_hotel_id)))return null;let affiliate=null;if(m.affiliate_url){const a=new URL(m.affiliate_url),p=a.searchParams.get('pc'),d=p?new URL(p):null;if(a.protocol==='https:'&&a.hostname==='hb.afl.rakuten.co.jp'&&d&&d.protocol==='https:'&&d.hostname==='travel.rakuten.co.jp'&&d.pathname.split('/').filter(Boolean).includes(String(m.rakuten_hotel_id)))affiliate=a.href}return{url:affiliate||u.href,affiliate:!!affiliate}}catch(e){return null}}
+function validMatch(s,m){if(!m||m.stay_id!==s.id||m.name!==s.name||!/^[0-9]+$/.test(String(m.rakuten_hotel_id||'')))return null;try{const u=new URL(m.rakuten_url),segments=u.pathname.split('/').filter(Boolean);if(u.protocol!=='https:'||u.hostname!=='travel.rakuten.co.jp'||!segments.includes(String(m.rakuten_hotel_id)))return null;let affiliate=null;if(m.affiliate_url){const a=new URL(m.affiliate_url),p=a.searchParams.get('pc'),d=p?new URL(p):null;if(a.protocol==='https:'&&a.hostname==='hb.afl.rakuten.co.jp'&&d&&d.protocol==='https:'&&d.hostname==='travel.rakuten.co.jp'&&d.pathname.split('/').filter(Boolean).includes(String(m.rakuten_hotel_id)))affiliate=m.affiliate_url}return{url:affiliate||u.href,affiliate:!!affiliate}}catch(e){return null}}
 function action(label,url,klass,rel){const a=node('a',label);a.className='sd-button '+klass;a.href=url;a.target='_blank';a.rel=rel||'noopener noreferrer';return a}
 function addRow(parent,label,value){const wrap=node('div','');wrap.className='sd-row';const dt=node('dt',label),dd=node('dd',value||'未確認・要問い合わせ');if(!value||value==='未確認'){dd.textContent='未確認・要問い合わせ';dd.className='unknown'}wrap.append(dt,dd);parent.appendChild(wrap)}
 function getCompare(){try{const a=JSON.parse(localStorage.getItem(compareKey)||'[]');return Array.isArray(a)?[...new Set(a.filter(x=>typeof x==='string'))].slice(0,4):[]}catch(e){return[]}}
@@ -12,6 +21,7 @@ function showError(message){$('sd-loading').hidden=true;$('sd-error').hidden=fal
 if(!/^stay-\d{3}$/.test(id)){showError('施設が指定されていません。全国の宿一覧から施設を選んでください。');return}
 Promise.all([fetch('../data/stays.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('stays '+r.status);return r.json()}),fetch('../data/rakuten-matches.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)]).then(([data,rakuten])=>{
  const stays=data.stays||[],s=stays.find(x=>x.id===id);if(!s){showError('指定した施設が見つかりません。全国の宿一覧から探し直してください。');return}
+ rememberViewedStay(s.id);
  $('sd-loading').hidden=true;$('sd-content').hidden=false;
  $('sd-title').textContent=s.name;$('sd-pref').textContent=s.pref;$('sd-kind').textContent=s.kind;
  $('sd-summary').textContent=s.detail||'施設名・所在地を確認した宿泊候補です。サービス詳細は未確認・要問い合わせ。';

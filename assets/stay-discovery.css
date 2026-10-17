@@ -1,0 +1,14 @@
+/* STAY SELECT | 2026-10-17 | compact quick discovery */
+.ss-discovery-quick{background:linear-gradient(125deg,#f5f8f2,#eaf1e9);border:1px solid #d6e4d6;border-radius:18px;padding:22px;margin:0 0 22px;color:#183f30}
+.ss-discovery-quick h2{font-size:clamp(20px,3vw,27px);margin:0 0 6px;letter-spacing:-.02em}
+.ss-discovery-quick p{font-size:13px;line-height:1.6;margin:0 0 14px;color:#4a6a55}
+.ss-quick-filters{display:flex;flex-wrap:wrap;gap:9px}
+.ss-quick-filters button{appearance:none;border:1px solid #b6ceba;border-radius:12px;background:#fff;color:#20513b;cursor:pointer;font:inherit;font-weight:800;font-size:14px;line-height:1.25;padding:12px 14px;min-height:54px;display:flex;flex-direction:column;gap:4px;text-align:left;transition:background .15s,border-color .15s}
+.ss-quick-filters button small{font-size:11px;font-weight:600;color:#526f5c}
+.ss-quick-filters button:hover{background:#dceee0;border-color:#7da98a}
+.ss-quick-filters button:focus-visible{outline:3px solid #23754c;outline-offset:3px}
+.ss-quick-filters button[data-ss-quick=affiliate]{background:#fff9eb;border-color:#e4c889}
+.ss-prefmap .ss-pref-total{display:inline-block;margin-left:5px;font-size:10px;font-weight:700;opacity:.75;white-space:nowrap}
+.ss-prefmap a.ss-pref-empty{opacity:.45;cursor:default;pointer-events:none}
+@media(max-width:680px){.ss-discovery-quick{padding:17px 13px;border-radius:13px}.ss-quick-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ss-quick-filters button{min-height:60px;padding:10px 11px;font-size:13px}.ss-prefmap .ss-pref-total{display:block;margin-left:0}}
+@media(prefers-reduced-motion:reduce){.ss-quick-filters button{transition:none}}
