@@ -3,14 +3,15 @@
 <title>宿の条件・旅行総額を4施設まで比較｜STAY SELECT</title>
 <meta name="description" content="全国の宿泊施設から気になる宿を最大4施設選び、貸切風呂・ケーキ・アクセスなどの条件を比較。自分で入力した宿泊代・食事・交通費から旅行総額も試算できます。">
 <link rel="canonical" href="https://goonyogunyo-prog.github.io/stay-select/compare/">
-<link rel="stylesheet" href="../assets/stay-next.css?v=20261016-0626"><link rel="stylesheet" href="../assets/stay-budget.css?v=20261016-1228"><meta name="theme-color" content="#193b34"><link rel="stylesheet" href="../assets/stay-detail.css?v=20261016-1028"></head>
+<link rel="stylesheet" href="../assets/stay-next.css?v=20261016-0626"><link rel="stylesheet" href="../assets/stay-budget.css?v=20261016-1228"><meta name="theme-color" content="#193b34"><link rel="stylesheet" href="../assets/stay-detail.css?v=20261016-1028"><link rel="stylesheet" href="../assets/stay-print.css?v=20261017-1424"><link rel="stylesheet" href="../assets/stay-compare-notes.css?v=20261017-1923"></head>
 <body class="ss"><div class="ss-topline" aria-hidden="true"></div>
 <header class="ss-header"><div class="ss-wrap ss-headrow"><a class="ss-logo" href="../">STAY <b>SELECT</b></a><nav class="ss-nav" aria-label="主要ナビゲーション"><a href="../">トップ</a><a href="../stays/">全国の宿一覧</a><a href="../finder/">3候補で探す</a><a href="../planner/">宿選びプランナー</a><a href="../guides/onsen.html">温泉比較</a></nav></div></header>
 <main id="main"><section class="ss-directory-hero"><div class="ss-wrap"><span class="ss-kicker">Compare stays</span><h1>気になる宿を、条件と総額で比べる。</h1><p>最大4施設の設備・サービス条件を比較。宿泊代・食事・交通費を自分で入力して、旅行総額も試算できます。</p><div class="ss-quicklinks"><a href="#budget-comparison">旅行総額を試算する ↓</a><a href="../stays/">全国の宿から選ぶ →</a><a href="../guides/cottage.html">コテージの詳細条件 →</a></div></div></section>
 <section class="ss-wrap ss-compare-shell"><div class="ss-compare-controls"><div><label for="compare-add">比較したい宿を追加（施設名・都道府県）</label><select id="compare-add"><option value="">読み込み中…</option></select></div><button type="button" id="compare-add-button">比較候補に追加</button></div>
 <p id="compare-feedback" class="ss-compare-feedback" role="status" aria-live="polite"></p>
-<div class="ss-compare-actions-inline"><button type="button" id="compare-share">比較URLをコピー</button><button type="button" id="compare-clear">候補をすべて外す</button><a href="../stays/">宿一覧に戻る ↗</a></div>
+<div class="ss-compare-actions-inline"><button type="button" id="ss-compare-print" aria-label="比較表と旅行予算を印刷する">比較表を印刷・PDF保存 ↗</button><button type="button" id="compare-share">比較URLをコピー</button><button type="button" id="compare-clear">候補をすべて外す</button><a href="../stays/">宿一覧に戻る ↗</a></div>
 <div id="compare-empty" class="ss-compare-empty" hidden><h2>まだ比較候補がありません</h2><p>上のプルダウンから宿を追加するか、全国の宿一覧で「比較候補に追加」を押してね。</p><a class="ss-button" href="../stays/">全国の宿から探す →</a></div>
+<p class="ss-compare-notes-warning">保存した旅行メモはこの端末の比較表だけに表示します。比較URLには含まれず、印刷・PDF保存時も非表示です。共有端末ではメモの取り扱いにご注意ください。</p>
 <div id="compare-result" class="ss-compare-table-scroll" hidden><table class="ss-compare-table"><thead id="compare-head"></thead><tbody id="compare-body"></tbody></table></div>
 <section id="budget-comparison" class="sb-shell" aria-labelledby="sb-title">
 <div class="sb-intro"><span class="ss-overline">Trip budget / 手入力で比較</span><h2 id="sb-title">旅行総額を試算する</h2><p>宿泊代だけでなく、食事・交通・記念日演出なども含めて比較できます。上の比較表に追加した宿が自動で表示されます。</p><p class="sb-caution"><strong>重要：</strong>表示する金額はすべて利用者の手入力です。STAY SELECTが料金・空室を取得・保証するものではありません。<strong>同じ宿泊日・人数・部屋条件</strong>で見積もり、宿泊代には税・サービス料を含めて入力してください。未入力は0円とみなさず、すべて入力（不要な項目は0円）するまで合計を出しません。</p></div>
@@ -22,4 +23,4 @@
 <p class="ss-compare-note"><strong>情報の読み方：</strong>「未確認・要問い合わせ」はサービスが「ない」という意味ではありません。公式ホテル一覧に載っていることと、貸切風呂・飲み放題・浴衣・ケーキ・装飾・送迎・買い出し条件が確認できていることは別です。予約前に必ず施設公式情報・宿泊プランで確認してください。料金・空室はリアルタイムではありません。</p>
 <p class="ss-compare-note">当ページの公式情報リンクは出典確認用で、アフィリエイト成果リンクではありません。広告掲載時はPRと明示します。</p>
 </section></main><footer class="ss-footer"><div class="ss-wrap ss-footgrid"><div><a class="ss-logo" href="../">STAY <b>SELECT</b></a><p>宿の条件を、予約前に確かめる。</p></div><div><a href="../stays/">全国の宿一覧</a><a href="../guides/onsen.html">温泉旅館</a><a href="../guides/cottage.html">コテージ</a><a href="../privacy.html">プライバシーポリシー</a></div></div></footer>
-<script src="../assets/stay-compare.js?v=20261016-1228" defer></script><script src="../assets/stay-budget.js?v=20261016-1228" defer></script></body></html>
+<script src="../assets/stay-compare.js?v=20261016-1228" defer></script><script src="../assets/stay-budget.js?v=20261016-1228" defer></script><script defer src="../assets/stay-print.js?v=20261017-1424"></script><script defer src="../assets/stay-compare-notes.js?v=20261017-1923"></script></body></html>
