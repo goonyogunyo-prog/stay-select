@@ -1,0 +1,6 @@
+/* STAY SELECT | URL inventory CSV */
+.ss-links-export-panel{margin:24px 0;padding:22px 24px;border:1px solid #d2e6dd;border-radius:16px;background:#f1f9f5;color:#24483d;line-height:1.75}
+.ss-links-export-panel h3{margin:0 0 8px;font-size:19px}.ss-links-export-panel p{margin:8px 0;font-size:14px}
+.ss-links-export-panel button{margin:8px 0;padding:11px 18px;border:0;border-radius:9px;background:#145c50;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+.ss-links-export-panel button:hover,.ss-links-export-panel button:focus-visible{background:#0a4038;outline:2px solid #78b8a3;outline-offset:2px}
+@media(max-width:430px){.ss-links-export-panel{padding:16px 14px}.ss-links-export-panel button{width:100%;white-space:normal}}

@@ -1,0 +1,7 @@
+/* STAY SELECT: individual official-site search helper, 2026-10-18 */
+.ss-official-search-panel{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;background:#f4f9f6;border:1px solid #b8d5c8;border-radius:15px;padding:16px 19px;margin:22px 0;color:#173d32}
+.ss-official-search-panel strong{font-size:16px}.ss-official-search-panel p{margin:5px 0 0;font-size:13px;line-height:1.7;max-width:860px}
+.ss-official-search-panel #ss-official-search-status{font-size:12px;color:#44665b}
+.ss-stay-links a.ss-official-search-link{display:inline-flex;align-items:center;justify-content:center;max-width:100%;overflow-wrap:anywhere;line-height:1.5;border:1px solid #7ba8a1;border-radius:8px;background:#f7fbfa;color:#125e58;padding:8px 11px;text-decoration:none;font-weight:700;font-size:12px}
+.ss-stay-links a.ss-official-search-link:hover,.ss-stay-links a.ss-official-search-link:focus-visible{background:#e4f4f0;outline:2px solid #3e8579;outline-offset:2px}
+@media(max-width:390px){.ss-official-search-panel{padding:13px;gap:6px}.ss-stay-links a.ss-official-search-link{width:100%;font-size:12px}}

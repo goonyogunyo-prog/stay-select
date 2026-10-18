@@ -1,0 +1,9 @@
+/* STAY SELECT: accessible share/copy panel */
+.ss-copy-results{display:flex;align-items:center;flex-wrap:wrap;gap:14px;padding:20px;margin:18px 0 24px;background:#eef7f0;border:1px solid #b8d2be;border-radius:18px;color:#183c32;box-sizing:border-box;max-width:100%}
+.ss-copy-results>div{flex:1 1 270px;min-width:0}.ss-copy-results h2{font-size:1.12rem;margin:0 0 5px}.ss-copy-results p{font-size:.9rem;line-height:1.65;margin:0;color:#36574b}
+.ss-copy-results button{padding:12px 17px;border-radius:11px;background:#195f47;color:#fff;border:0;font-weight:700;cursor:pointer;max-width:100%;white-space:normal}
+.ss-copy-results button:disabled{opacity:.5;cursor:not-allowed}
+.ss-copy-results #ss-copy-results-status{flex:1 1 100%;font-size:.85rem}
+.ss-copy-results-fallback{width:100%;font-size:.86rem;font-weight:700}.ss-copy-results-fallback[hidden]{display:none}
+.ss-copy-results textarea{display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:10px;max-width:100%;border:1px solid #a9c3b4;border-radius:8px;font:inherit;overflow-wrap:anywhere}
+@media(max-width:430px){.ss-copy-results{padding:14px;gap:10px}.ss-copy-results button{width:100%}}

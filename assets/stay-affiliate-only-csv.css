@@ -1,0 +1,6 @@
+/* STAY SELECT | verified affiliate-only management export */
+#ss-affiliate-only-csv{margin-left:10px;background:#b77926;border:1px solid #a26920}
+#ss-affiliate-only-csv:hover,#ss-affiliate-only-csv:focus-visible{background:#87571d;outline:2px solid #e9b35f;outline-offset:2px}
+.ss-affiliate-note{font-size:13px;line-height:1.7;color:#57534e;margin:8px 0 0}
+#ss-affiliate-only-status{font-size:13px;color:#155e4b;font-weight:600;min-height:1.4em}
+@media(max-width:700px){#ss-affiliate-only-csv{display:block;margin:10px 0 0;width:100%;white-space:normal}}
