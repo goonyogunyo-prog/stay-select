@@ -1,0 +1,5 @@
+/* STAY SELECT | travel-style discovery, local-only filters */
+(()=>{'use strict';const root=document.getElementById('na-style-buttons'),status=document.getElementById('na-style-status'),list=document.getElementById('na-list'),q=document.getElementById('na-q');if(!root||!status||!list||!q)return;const cards=[...list.querySelectorAll('.na-card[data-id]')];if(cards.length!==38){status.textContent='新着施設の件数が一致しません。';return;}const expected={group:7,resort:16,design:15};for(const [k,n] of Object.entries(expected)){if(cards.filter(c=>c.dataset.style===k).length!==n){status.textContent='スタイル別件数が一致しません。';return;}}
+const buttons=[...root.querySelectorAll('button[data-style]')];function set(style){window.staySelectArrivalStyle=style;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.style===style)));q.dispatchEvent(new Event('input',{bubbles:true}));status.textContent=style?({group:'家族・グループ・沖縄ステイ',resort:'温泉・絶景リゾート',design:'フルサービス・シティ'}[style]+'の宿に絞り込みました。詳細な設備・利用条件は公式サイトで確認してください。'):'すべての新着38施設を表示します。';}
+buttons.forEach(b=>b.addEventListener('click',()=>set(b.dataset.style)));set('');
+})();
