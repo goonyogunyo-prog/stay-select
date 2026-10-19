@@ -1,0 +1,11 @@
+STAY SELECT | 2026-10-20 04:19 JST | GitHub main start/end verification
+Repo: https://github.com/goonyogunyo-prog/stay-select/
+GitHub connector GET branches/main START HEAD = 727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+GitHub connector GET branches/main END HEAD   = 727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+GET git/trees/main?recursive=1: start/end tree SHA = 727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+Recursive tree entries 355, blobs 345, truncated=false.
+All 345 sorted path + blob SHA pairs compared start/end, exact match.
+GitHub main-only 25 blobs from the verified 2457 diff must NOT be deleted.
+The missing 2495/721 full cumulative ZIP was NOT uploaded to GitHub main.
+No writes to GitHub were performed in this run. Current new feature is not deployed.
+This is a patch, not a full main SHA diff against missing 2495.

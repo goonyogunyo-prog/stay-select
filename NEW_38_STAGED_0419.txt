@@ -1,0 +1,57 @@
+STAY SELECT | 2026-10-20 04:19 JST | 38 new staged candidate stays (NOT published)
+Previous full cumulative ZIP 2495/721 remains unavailable. No production data/stays.json changes.
+Official hotel body fetched: 2; association/union only: 36; business hotels: 0.
+
+## 阿蘇温泉観光旅館協同組合 | 熊本県 | 9 stays
+https://onsen.aso.ne.jp/link/
+- 阿蘇プラザホテル 望蘇閣 | 温泉旅館 | association listing only
+- 蘇山郷 | 温泉旅館 | independent hotel body https://sozankyo.com/
+- 親和苑 | 温泉旅館 | association listing only
+- 旅の宿 阿蘇乃湯 | 温泉旅館 | association listing only
+- 旅館 金時 | 温泉旅館 | association listing only
+- 湯の宿 入船 | 温泉旅館 | association listing only
+- 旅館 泰山荘 | 温泉旅館 | association listing only
+- AKAMIZU GOLF RESORT（赤水ゴルフリゾート） | リゾート | association listing only
+- 御宿 小笠原 | 温泉旅館 | association listing only
+
+## 別所温泉観光協会 | 長野県 | 8 stays
+https://www.bessho-spa.jp/mem/
+- 上松や | 温泉旅館 | independent hotel body https://www.uematsuya.com/
+- 斎藤旅館 | 温泉旅館 | association listing only
+- 旅の宿 南條旅館 | 温泉旅館 | association listing only
+- かわせみの宿 | 温泉旅館 | association listing only
+- 旅館 桂荘 | 温泉旅館 | association listing only
+- 緑屋 | 温泉旅館 | association listing only
+- 旅館 晴山 | 温泉旅館 | association listing only
+- 民家風旅館チロル亭 | 温泉旅館 | association listing only
+
+## 天橋立観光協会 | 京都府 | 8 stays
+https://www.amanohashidate.jp/stay/
+- 玄妙庵 | 高級 | association listing only
+- moku杢《くろまつ》 | 一棟貸し | association listing only
+- 文珠荘 | 温泉旅館 | association listing only
+- 天橋立ユースホステル | その他 | association listing only
+- 余花の宿 花笑舞 | その他 | association listing only
+- Sea Side Villa 浜つづり | 一棟貸し | association listing only
+- 対橋楼 | 温泉旅館 | association listing only
+- 茶六別館 | 高級 | association listing only
+
+## 伊豆湯河原温泉観光協会・旅館協同組合 | 静岡県 | 4 stays
+https://izuyu-kanko.jp/
+- 川堰苑いすゞホテル | 温泉旅館 | association listing only
+- ゆがわら大野屋旅館 | 温泉旅館 | association listing only
+- ニューウエルシティ湯河原 | 温泉旅館 | association listing only
+- 御宿 瑞鷹 | 温泉旅館 | association listing only
+
+## 三朝温泉観光協会・旅館協同組合 | 鳥取県 | 9 stays
+https://misasaonsen.jp/stay/
+- 三朝温泉 桃園館 | 温泉旅館 | association listing only
+- 古き良き湯の宿 木屋旅館 | 温泉旅館 | association listing only
+- ぬくもりの宿 中屋 | 温泉旅館 | association listing only
+- かがり火の宿 有楽 | 温泉旅館 | association listing only
+- 木造りの宿 橋津屋 | 温泉旅館 | association listing only
+- BARCOS RYOKAN 三朝荘 | 温泉旅館 | association listing only
+- 旬彩の宿 いわゆ | 温泉旅館 | association listing only
+- 三朝館 | 温泉旅館 | association listing only
+- 依山楼 岩崎 | 温泉旅館 | association listing only
+

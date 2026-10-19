@@ -1,0 +1,13 @@
+STAY SELECT | 2026-10-20 03:23 JST | SAFE PATCH TEST REPORT
+Required 2495 base ZIP: MISSING. All 11 0123 accompanying artifacts: MISSING. Library title searches: 0 results.
+Latest physically available full site ZIP: 2457 stays / 671 files.
+2457 ZIP CRC and all 671 Git blob SHA against 0020_GITHUB_SHA_DIFF: PASS.
+Previous 0226 safe patch: CRC PASS, all 12 entries inherited (README renamed only).
+2026-10-20 03:23 official listing candidates: 38 from 5 networks; hotel independent official body fetched 0; business 0.
+NFKC + Unicode whitespace/punctuation/symbol removal name duplicate: 0 across 2457 existing + 38 old staged + 38 new staged = 2533.
+2495 baseline normalized duplicates: NOT VERIFIED, do not integrate candidates.
+New feature JS node --check: PASS; previous readiness JS node --check: PASS.
+Chromium Playwright set_content + CSS at 390px: PASS: search 2 sample stays; entry ¥12,500, overdue 1, localStorage mock, CSV/JSON actual downloads, JSON restore, status change, filtering; overflow 0; JS exceptions 0.
+Chromium full-data memory DOM: PASS 2457 actual stays JSON loaded, facility search, 390px overflow 0, JS exceptions 0.
+HTTP integration via 127.0.0.1: FAILED / ERR_BLOCKED_BY_ADMINISTRATOR; do not claim HTTP integration.
+GitHub START/END HEAD and full 345 blob tree digest identical; no changes detected.

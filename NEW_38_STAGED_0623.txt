@@ -1,0 +1,43 @@
+STAY SELECT｜2026-10-20 06:23 JST｜公式掲載確認済み38施設（本番未統合）
+重要: 2495施設版の起点ZIPが未取得のため本番データに統合しない。
+宿独自公式本文直接取得0件。38件すべて協会・組合・地域公式掲載のみ。営業・料金・空室・予約条件は未検証。
+NFKC＋UnicodeカテゴリZ/P/S除去（空白・句読点・記号）で既存2457＋前候補152＋今回38＝2647名称重複0。
+
+01. 湯坊いちらく｜山形県｜天童市観光物産協会（天童温泉）｜https://bussan-tendo.gr.jp/onsen/｜協会等公式掲載のみ
+02. 栄屋ホテル｜山形県｜天童市観光物産協会（天童温泉）｜https://bussan-tendo.gr.jp/onsen/｜協会等公式掲載のみ
+03. あづま荘｜山形県｜天童市観光物産協会（天童温泉）｜https://bussan-tendo.gr.jp/onsen/｜協会等公式掲載のみ
+04. 天童荘｜山形県｜天童市観光物産協会（天童温泉）｜https://bussan-tendo.gr.jp/onsen/｜協会等公式掲載のみ
+05. 天童ホテル｜山形県｜天童市観光物産協会（天童温泉）｜https://bussan-tendo.gr.jp/onsen/｜協会等公式掲載のみ
+06. ホテル王将｜山形県｜天童市観光物産協会（天童温泉）｜https://bussan-tendo.gr.jp/onsen/｜協会等公式掲載のみ
+07. つるや｜山形県｜天童市観光物産協会（天童温泉）｜https://bussan-tendo.gr.jp/onsen/｜協会等公式掲載のみ
+08. 滝の湯｜山形県｜天童市観光物産協会（天童温泉）｜https://bussan-tendo.gr.jp/onsen/｜協会等公式掲載のみ
+09. ヴィライナワシロ｜福島県｜猪苗代観光協会｜https://www.bandaisan.or.jp/member/｜協会等公式掲載のみ
+10. 猪苗代観光ホテル｜福島県｜猪苗代観光協会｜https://www.bandaisan.or.jp/member/｜協会等公式掲載のみ
+11. 御宿 万葉亭｜福島県｜猪苗代観光協会｜https://www.bandaisan.or.jp/member/｜協会等公式掲載のみ
+12. 猪苗代 四季の里｜福島県｜猪苗代観光協会｜https://www.bandaisan.or.jp/member/｜協会等公式掲載のみ
+13. 磐梯西村屋｜福島県｜猪苗代観光協会｜https://www.bandaisan.or.jp/member/｜協会等公式掲載のみ
+14. 平澤屋｜福島県｜猪苗代観光協会｜https://www.bandaisan.or.jp/member/｜協会等公式掲載のみ
+15. LAKE SIDE HOTEL みなとや｜福島県｜猪苗代観光協会｜https://www.bandaisan.or.jp/member/｜協会等公式掲載のみ
+16. いろり湯の宿 大阪屋｜福島県｜猪苗代観光協会｜https://www.bandaisan.or.jp/member/｜協会等公式掲載のみ
+17. 民宿奈倉｜群馬県｜宝台樹民宿組合・水上高原藤原民宿組合（地域公式掲載）｜https://hodaigi.jp/accommodation/｜協会等公式掲載のみ
+18. ペンションパル｜群馬県｜宝台樹民宿組合・水上高原藤原民宿組合（地域公式掲載）｜https://hodaigi.jp/accommodation/｜協会等公式掲載のみ
+19. 民宿関ヶ原｜群馬県｜宝台樹民宿組合・水上高原藤原民宿組合（地域公式掲載）｜https://hodaigi.jp/accommodation/｜協会等公式掲載のみ
+20. ロッジ樹林｜群馬県｜宝台樹民宿組合・水上高原藤原民宿組合（地域公式掲載）｜https://hodaigi.jp/accommodation/｜協会等公式掲載のみ
+21. ロッジすぎな｜群馬県｜宝台樹民宿組合・水上高原藤原民宿組合（地域公式掲載）｜https://hodaigi.jp/accommodation/｜協会等公式掲載のみ
+22. 上の原山の家｜群馬県｜宝台樹民宿組合・水上高原藤原民宿組合（地域公式掲載）｜https://hodaigi.jp/accommodation/｜協会等公式掲載のみ
+23. ロッジとんち｜群馬県｜宝台樹民宿組合・水上高原藤原民宿組合（地域公式掲載）｜https://hodaigi.jp/accommodation/｜協会等公式掲載のみ
+24. ペンションアミューズ｜群馬県｜宝台樹民宿組合・水上高原藤原民宿組合（地域公式掲載）｜https://hodaigi.jp/accommodation/｜協会等公式掲載のみ
+25. 吟松亭あわしま｜群馬県｜老神温泉観光協会・旅館組合｜https://oigami.sakura.ne.jp/｜協会等公式掲載のみ
+26. 仙郷｜群馬県｜老神温泉観光協会・旅館組合｜https://oigami.sakura.ne.jp/｜協会等公式掲載のみ
+27. 源泉湯の宿紫翠亭｜群馬県｜老神温泉観光協会・旅館組合｜https://oigami.sakura.ne.jp/｜協会等公式掲載のみ
+28. もうひとつのふる里ホテル山口屋｜群馬県｜老神温泉観光協会・旅館組合｜https://oigami.sakura.ne.jp/｜協会等公式掲載のみ
+29. 伍楼閣｜群馬県｜老神温泉観光協会・旅館組合｜https://oigami.sakura.ne.jp/｜協会等公式掲載のみ
+30. 穴原湯 東秀館｜群馬県｜老神温泉観光協会・旅館組合｜https://oigami.sakura.ne.jp/｜協会等公式掲載のみ
+31. 旅館 明星｜新潟県｜松之山温泉公式宿泊案内｜https://www.matsunoyama-onsen.com/facility/｜協会等公式掲載のみ
+32. 松之山温泉 凌雲閣｜新潟県｜松之山温泉公式宿泊案内｜https://www.matsunoyama-onsen.com/facility/｜協会等公式掲載のみ
+33. 山の森のホテル ふくずみ｜新潟県｜松之山温泉公式宿泊案内｜https://www.matsunoyama-onsen.com/facility/｜協会等公式掲載のみ
+34. Ponshu Hotel 睡夢｜新潟県｜松之山温泉公式宿泊案内｜https://www.matsunoyama-onsen.com/facility/｜協会等公式掲載のみ
+35. ひなの宿ちとせ｜新潟県｜松之山温泉公式宿泊案内｜https://www.matsunoyama-onsen.com/facility/｜協会等公式掲載のみ
+36. 酒の宿 玉城屋｜新潟県｜松之山温泉公式宿泊案内｜https://www.matsunoyama-onsen.com/facility/｜協会等公式掲載のみ
+37. 薬湯香ル宿白川屋｜新潟県｜松之山温泉公式宿泊案内｜https://www.matsunoyama-onsen.com/facility/｜協会等公式掲載のみ
+38. 素泊まりの宿 みよしや｜新潟県｜松之山温泉公式宿泊案内｜https://www.matsunoyama-onsen.com/facility/｜協会等公式掲載のみ

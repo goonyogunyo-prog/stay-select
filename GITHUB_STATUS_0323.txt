@@ -1,0 +1,8 @@
+STAY SELECT 2026-10-20 03:23 JST / GitHub HEAD & TREE
+START HEAD: 727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+END   HEAD: 727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+START/END recursive tree: entries 355, blobs 345, truncated false
+All 345 path+SHA sorted UTF-8 FNV1a32 (path\tsha\n): 3493b1a5 (same start/end)
+2495 cumulative ZIP absent; no GitHub merge, no GitHub writes.
+Full GitHub SHA_DIFF for 2495 or later CANNOT be generated without base ZIP.
+GitHub-only 25 files from previous verified comparison: preserve; do not delete.

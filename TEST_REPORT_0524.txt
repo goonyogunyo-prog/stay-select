@@ -1,0 +1,24 @@
+STAY SELECT｜2026-10-20 05:24 JST｜安全累積パッチ検証
+
+【起点】
+指定 STAY_SELECT_20261020_0123_CUMULATIVE_2495_STAYS_CHECKOUT_REVIEW.zip は /mnt/data に存在せず、Library/Conversation検索でも取得できなかった。従って721件CRC/全バイト/Git blob SHA対照・完全累積ZIP制作は未実施。
+利用可能な旧サイトZIP STAY_SELECT_20261020_0020_CUMULATIVE_2457_STAYS_SHUTTLE_PARKING_671.zip のCRCは成功。前回パッチ STAY_SELECT_20261020_0419_SAFE_CUMULATIVE_PATCH_3_FEATURES_114_STAGED.zip の35件CRC成功。
+
+【新規38件】
+5公式掲載ネットワーク：黒川温泉観光旅館協同組合8、下呂温泉旅館協同組合8、由布院温泉旅館組合10、玉造温泉旅館協同組合/松江観光協会1、土佐清水市観光協会11。
+宿独自公式本文を直接取得したのは3件：こうの湯、TheMana Village、アシズリテルメ。他35件は協会・組合・自治体公式掲載のみ。全38件は本番未統合。
+Unicode NFKC+Unicode空白/句読点/記号除去、casefoldで既存2457+過去候補114+新候補38=2609名称を照合し重複0。指定2495版に含まれる追加38件は未照合。
+ビジネスホテル新規0。営業状況、料金、空室、キャンセル規定は未検証。由布院旅館組合の一部掲載料金は2021年時点のため引用・転載せず。
+
+【新機能】
+新規HTML/CSS/JS：stay-transport-budget.html / assets/stay-transport-budget.css / assets/stay-transport-budget.js
+Node v22 --check成功。
+Chromium Playwright実行（/usr/bin/chromium、set_contentメモリDOM + CSS注入 + 2457件JSONのfetchモック）：2457件読み込み、3人・運賃10000円×3+道路3000+燃料4000+駐車2000=総額39000円、1人13000円、localStorageモック保存1件、CSV/JSON実ダウンロード・JSON復元、交通手段絞り込み、390px横はみ出し0、JavaScript例外0。
+本番HTTP/実localStorage永続性は未検証。
+
+【継承】
+旧パッチ35ファイル中34ファイルは同名バイト完全一致。旧UPLOAD_README.txtはARCHIVE_0419_UPLOAD_README.txtに旧バイト完全保存。今回のZIPは全エントリCRC/全バイト/Git blob SHAを作成時に照合。
+楽天成果33件のJSONは一切変更していない（本番側データに未アクセス）。未照合施設の楽天URLは作成していない。
+
+【GitHub】
+開始/終了 main HEAD 727d6f1c9480e6de62e7ae2c3c348ff3fa73131f、recursive tree 355件、345 blobs、truncated=false、全345 blob path+SHAソートFNV1a32=1f0e550b 開始終了一致。先行変更なし。今回機能HTML/CSS/JSはmainに未存在。GitHubへ書き込みなし。既存ファイル削除なし。

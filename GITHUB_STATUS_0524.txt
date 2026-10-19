@@ -1,0 +1,14 @@
+STAY SELECT｜2026-10-20 05:24 JST GitHub main監査
+repository https://github.com/goonyogunyo-prog/stay-select/
+start main HEAD 727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+end main HEAD   727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+start/end recursive tree entries 355, blobs 345, truncated false
+start/end 345 blob path+SHA (sort lexicographic) FNV1a32 1f0e550b
+HEAD and blob fingerprint unchanged; no detected concurrent main changes.
+new feature files not present on GitHub main:
+  stay-transport-budget.html
+  assets/stay-transport-budget.css
+  assets/stay-transport-budget.js
+GitHub main is not the 2495/2609 version. GitHub existing files not removed. No commits or pushes performed.
+
+Limitations: 2495 base ZIP and its 721-entry SHA diff file unavailable; cannot generate a reliable complete cumulative GitHub SHA diff for that missing base.

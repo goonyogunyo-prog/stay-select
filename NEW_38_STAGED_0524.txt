@@ -1,0 +1,42 @@
+STAY SELECT｜2026-10-20 05:24｜新規候補38件（本番未統合）
+
+01. こうの湯｜熊本県｜黒川温泉観光旅館協同組合｜https://www.kurokawaonsen.or.jp/availability/｜独自公式本文直接取得=はい｜独自公式URL=https://www.kounoyu.jp/facilities.html
+02. お宿 野の花｜熊本県｜黒川温泉観光旅館協同組合｜https://www.kurokawaonsen.or.jp/availability/｜独自公式本文直接取得=いいえ｜独自公式URL=
+03. ふじ屋｜熊本県｜黒川温泉観光旅館協同組合｜https://www.kurokawaonsen.or.jp/availability/｜独自公式本文直接取得=いいえ｜独自公式URL=
+04. 旅館 美里｜熊本県｜黒川温泉観光旅館協同組合｜https://www.kurokawaonsen.or.jp/availability/｜独自公式本文直接取得=いいえ｜独自公式URL=
+05. 旅館 やまの湯｜熊本県｜黒川温泉観光旅館協同組合｜https://www.kurokawaonsen.or.jp/availability/｜独自公式本文直接取得=いいえ｜独自公式URL=
+06. やまびこ旅館｜熊本県｜黒川温泉観光旅館協同組合｜https://www.kurokawaonsen.or.jp/availability/｜独自公式本文直接取得=いいえ｜独自公式URL=
+07. 夢龍胆｜熊本県｜黒川温泉観光旅館協同組合｜https://www.kurokawaonsen.or.jp/availability/｜独自公式本文直接取得=いいえ｜独自公式URL=
+08. 里の湯 和らく｜熊本県｜黒川温泉観光旅館協同組合｜https://www.kurokawaonsen.or.jp/availability/｜独自公式本文直接取得=いいえ｜独自公式URL=
+09. みのり荘｜岐阜県｜下呂温泉旅館協同組合｜https://www.gero-spa.or.jp/｜独自公式本文直接取得=いいえ｜独自公式URL=
+10. 旅館 瓢きん｜岐阜県｜下呂温泉旅館協同組合｜https://www.gero-spa.or.jp/｜独自公式本文直接取得=いいえ｜独自公式URL=
+11. 紅葉館わん泊亭｜岐阜県｜下呂温泉旅館協同組合｜https://www.gero-spa.or.jp/｜独自公式本文直接取得=いいえ｜独自公式URL=
+12. いずみ荘｜岐阜県｜下呂温泉旅館協同組合｜https://www.gero-spa.or.jp/｜独自公式本文直接取得=いいえ｜独自公式URL=
+13. くつろぎの宿ふじはら｜岐阜県｜下呂温泉旅館協同組合｜https://www.gero-spa.or.jp/｜独自公式本文直接取得=いいえ｜独自公式URL=
+14. 旅館 ますや｜岐阜県｜下呂温泉旅館協同組合｜https://www.gero-spa.or.jp/｜独自公式本文直接取得=いいえ｜独自公式URL=
+15. 内湯 浅野屋｜岐阜県｜下呂温泉旅館協同組合｜https://www.gero-spa.or.jp/｜独自公式本文直接取得=いいえ｜独自公式URL=
+16. 幸乃湯旅館｜岐阜県｜下呂温泉旅館協同組合｜https://www.gero-spa.or.jp/｜独自公式本文直接取得=いいえ｜独自公式URL=
+17. 由布院 つるのゆ｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+18. 由布院 山ぼうし｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+19. しらたき旅館｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+20. 旅館 百合｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+21. 榎屋旅館｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+22. 山荘 田名加｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+23. ゆふいん 小萩荘｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+24. 御宿 ぬるかわ温泉｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+25. 御宿 のぎく｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+26. 御宿 てんにち｜大分県｜由布院温泉旅館組合｜https://yufuin-ryokan.com/members.html｜独自公式本文直接取得=いいえ｜独自公式URL=
+27. 温泉ゲストハウス 翠鳩の巣｜島根県｜玉造温泉旅館協同組合/松江観光協会玉造温泉支部｜https://tamayado.com/inn｜独自公式本文直接取得=いいえ｜独自公式URL=
+28. TheMana Village｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=はい｜独自公式URL=https://themanavillage.com/
+29. 足摺国際ホテル｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+30. アシズリテルメ｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=はい｜独自公式URL=https://www.ashizurithermae.jp/
+31. 足摺サニーサイドホテル｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+32. 民宿青岬｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+33. ペンションつりの里｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+34. 民宿 夕日｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+35. 旅館南粋｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+36. 素泊り民宿足摺倶楽部｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+37. 味彩の宿 南国｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+38. ホテルオレンジ｜高知県｜土佐清水市観光協会｜https://www.shimizu-kankou.com/mejica/m-stay/｜独自公式本文直接取得=いいえ｜独自公式URL=
+
+※2495件版起点ZIP欠落のため正規化重複検証は2457件+過去候補114件+今回38件の2609件に限定。

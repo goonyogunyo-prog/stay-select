@@ -1,0 +1,13 @@
+STAY SELECT | 2026-10-20 04:19 JST | SAFE PATCH VERIFICATION REPORT
+Base 2457 ZIP exists and SHA256 matches 15c8831a5b8a5fae841c33c2e38f068812aed9337f8f860af4ed1897a5d52200.
+Base 671/671 CRC, bytes and Git blob SHA checked against STAY_SELECT_20261020_0020_GITHUB_SHA_DIFF.txt.
+Previous patch 03:23 SHA256 cf838a74713b7c06221cd54408227dbaa1147ee730359a595f70c3f9af5b8428, 24/24 CRC and bytes validated; all 24 entries preserved, prior README moved to ARCHIVE_0323_UPLOAD_README.txt without byte changes.
+All staged 76 prior candidate records preserved; new 38 staged candidates from 5 official listing networks; no production stays.json changes.
+2457 existing + 76 prior staged + 38 new staged = 2571 normalized NFKC + Unicode Z/P/S category removal + casefold names, duplicate count 0. No new business hotel, existing business hotels 47.
+New 38 official listing verification: Aso 9 Kumamoto; Bessho 8 Nagano; Amanohashidate 8 Kyoto; Izu-Yugawara 4 Shizuoka; Misasa 9 Tottori. Hotel official BODY DIRECTLY fetched for 2: Sozankyo (sozankyo.com) and Uematsuya (uematsuya.com). Remaining 36: association/union official listing only.
+Node --check all three patch feature JS files passed.
+Chromium Playwright set_content memory DOM with real CSS, mocked fetch of actual 2457-stay data and mocked localStorage: 2457 facility load, hotel search/select, three subjective ratings 5/4/3 average 4.0, actual cost 42000 yen, revisit tally, CSV download 2 rows (header+1), JSON download/import, filter, 390px horizontal overflow 0, page JS exceptions 0.
+Chromium binary: /usr/bin/chromium. Browser admin blocked HTTPS origin navigation; therefore real-origin localStorage persistence and production HTTP integration remain untested. Browser localStorage was mocked; do not claim genuine persistence test.
+GitHub start/end HEAD and 345 blob path+SHA equality checked via connector; no upstream change detected; no GitHub writes.
+MISSING: 2495 ZIP / 721 file SHA diff and 10 other 0123 deliverables. Cannot validate 2495/721 or build 2533 full cumulative ZIP; candidate 38 remain staged. 2495 production duplicate check unavailable. Alias-level duplicate detection beyond exact normalized name not guaranteed.
+Not verified: live business operations, room rates, vacancies, cancellation rules, actual reservations, Rakuten affiliate tracking, real-site localStorage persistence.

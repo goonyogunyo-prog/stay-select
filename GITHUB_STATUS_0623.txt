@@ -1,0 +1,9 @@
+STAY SELECT 2026-10-20 06:23 JST
+GitHub connector branches/main and git/trees/main?recursive=1 start/end
+HEAD start=end=727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+Tree entries 355; blobs 345; truncated=false
+Sorted path+SHA FNV1a32 start=end=7a2862ed
+New feature stay-room-allocation.html and assets/stay-room-allocation.css/.js absent on GitHub main
+No remote changes, no GitHub write
+Main-only preexisting 25 blob files from prior reconciliation MUST NOT be deleted
+Full 2495 ZIP SHA diff unavailable because the ZIP is missing; never claim a complete merge
