@@ -1,0 +1,5 @@
+/* STAY SELECT | verified source URL copy */
+.ss-official-copy{border:1px solid #8bb8ad;border-radius:10px;padding:.47rem .72rem;background:#f0faf6;color:#194d42;font:inherit;font-size:.82rem;cursor:pointer;min-height:36px;white-space:normal}
+.ss-official-copy:hover,.ss-official-copy:focus-visible{background:#d9f3e9;outline-offset:2px}
+.ss-official-copy-status{color:#1b5a49;font-size:.84rem;margin:.45rem 0}
+@media(max-width:390px){.ss-official-copy{max-width:100%;font-size:.79rem}}

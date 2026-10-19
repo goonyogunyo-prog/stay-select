@@ -1,0 +1,7 @@
+/* STAY SELECT | URL verification progress | 2026-10-18 17:19 */
+.audit-review-label{display:flex;align-items:center;gap:9px;margin-top:12px;padding:11px 12px;border-radius:12px;background:#eef5f1;border:1px solid #c9ded1;color:#174c39;font-size:13px;font-weight:700;cursor:pointer}
+.audit-review-label input{width:19px;height:19px;accent-color:#216e53;flex:0 0 auto}
+.audit-review-help{padding:12px 14px;border-radius:12px;background:#f5f8f5;color:#37564b;line-height:1.65;font-size:13px}
+.audit-actions #audit-review-csv{background:#214f45;color:#fff}
+.audit-stats .audit-review-stat{background:#e9f3ee}
+@media(max-width:390px){.audit-review-label{font-size:12px;overflow-wrap:anywhere}.audit-actions #audit-review-csv{width:100%}}
