@@ -1,0 +1,14 @@
+STAY SELECT / 2026-10-20 02:26 JST / SAFE PARTIAL UPDATE
+
+Required base 2495 ZIP and 11 sidecars: NOT PRESENT in /mnt/data. Library/conversation search: no matching 0123 ZIP. Cannot verify 721/721 Git blobs, cannot safely produce cumulative 2533 ZIP.
+Newest accessible cumulative base: 2457 stays / 671 files, ZIP CRC OK and SHA256=15c8831a5b8a5fae841c33c2e38f068812aed9337f8f860af4ed1897a5d52200.
+GitHub main START/END HEAD=727d6f1c9480e6de62e7ae2c3c348ff3fa73131f, recursive tree=355 entries / 345 blobs, truncated=false, all path|sha FNV1a32=da2acffc both reads. No upstream changes during run.
+
+38 candidates / 5 official listing networks; direct independent hotel official body fetched=0; official association/union listings only=38; new business hotels=0. Unicode NFKC + whitespace + punctuation + symbols normalized name duplicates against all accessible 2457 base: zero. Latest 2495 duplicates UNTESTED.
+
+Feature: stay-readiness-board.html + assets/stay-readiness-board.css/js; dynamic fetch data/stays.json, 8 checkboxes, prefecture/search/progress filters, localStorage, CSV/JSON download and JSON import, print.
+Node v22 JS syntax PASS.
+Chromium /usr/bin/chromium Playwright set_content with 2457 stays mock fetch and CSS: loaded 2457, 80-row pagination, search, checkbox, localStorage save, CSV/JSON actual download, JSON import, 390px horizontal overflow=0, JS exceptions=0. Public HTTP/live localStorage untested.
+Patch ZIP 8/8 CRC/full bytes/Git blob SHA PASS.
+
+DO NOT treat staged candidate data as already added to public stays.json. DO NOT overwrite the missing 2495 version with a 2457-based ZIP. 2533 cumulative ZIP not created.

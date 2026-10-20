@@ -1,0 +1,5 @@
+STAY SELECT GitHub main START/END (connector):
+HEAD 727d6f1c9480e6de62e7ae2c3c348ff3fa73131f
+recursive tree entries=355 blobs=345 truncated=false
+FNV1a32(sorted path|sha joined newline)=da2acffc, identical at start/end
+No GitHub writes performed. 2495 ZIP and 11 sidecars unavailable. Main-only existing files MUST NOT be deleted.
