@@ -1,0 +1,10 @@
+/* STAY SELECT | official-name Google Maps SEARCH assistant | 2026-10-18 */
+(()=>{'use strict';const list=document.getElementById('na-list'),btn=document.getElementById('na-map-export'),status=document.getElementById('na-map-status');if(!list||!btn||!status)return;
+const cards=[...list.querySelectorAll('.na-card[data-id]')];if(cards.length!==38){status.textContent='施設件数の不整合により地図機能を停止しました。';return;}
+const maps=c=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent((c.querySelector('h3')?.textContent||'')+' '+(c.dataset.pref||''));
+const csv=v=>{let s=String(v??'').replace(/[\r\n\t]+/g,' ').trim();if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
+for(const c of cards){const actions=c.querySelector('.na-actions');if(!actions)continue;const a=document.createElement('a');a.href=maps(c);a.target='_blank';a.rel='noopener noreferrer';a.className='na-map-link';a.textContent='地図で探す ↗';a.setAttribute('aria-label',(c.querySelector('h3')?.textContent||'宿')+'をGoogleマップで検索');actions.append(a);}
+btn.addEventListener('click',()=>{const shown=cards.filter(c=>!c.hidden);if(!shown.length){status.textContent='検索結果が0件のため保存しませんでした。';return;}
+const ids=new Set(),rows=[['施設ID','施設名','都道府県','Googleマップ検索URL（位置未照合）','公式参照URL']];for(const c of shown){const id=c.dataset.id,name=c.querySelector('h3')?.textContent?.trim(),pref=c.dataset.pref,official=c.dataset.url;if(!id||ids.has(id)||!name||!pref||!/^https?:\/\//.test(official||'')){status.textContent='宿データに欠落・重複があるため保存を中止しました。';return;}ids.add(id);rows.push([id,name,pref,maps(c),official]);}
+const content='\uFEFF'+rows.map(r=>r.map(csv).join(',')).join('\r\n')+'\r\n';const u=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='stay-select-arrivals-map-search-'+shown.length+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),10000);status.textContent=shown.length+'件の地図検索URLを保存しました。ピンの位置は未照合です。';});
+})();

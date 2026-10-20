@@ -4,7 +4,7 @@ const root=document.getElementById('na-list'),out=document.getElementById('na-no
 if(!root||!out||!status||!count||!csv||!clear)return;
 const cards=[...root.querySelectorAll('.na-card[data-id]')];
 if(cards.length!==38){status.textContent='新着件数の不整合で比較メモを停止しました。';return;}
-const KEY='stayselect:new-arrivals-notes:20261019-1422',known=new Map(cards.map(c=>[c.dataset.id,c]));
+const KEY='stayselect:new-arrivals-notes:20261019-2027',known=new Map(cards.map(c=>[c.dataset.id,c]));
 let data={};try{const v=JSON.parse(localStorage.getItem(KEY)||'{}');if(v&&typeof v==='object'&&!Array.isArray(v))data=v;}catch(_){}
 data=Object.fromEntries(Object.entries(data).filter(([id,x])=>known.has(id)&&x&&typeof x==='object'&&x.url===known.get(id).dataset.url).slice(0,3));
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data));return true;}catch(_){status.textContent='端末への保存に失敗しました。ブラウザ設定をご確認ください。';return false;}};
