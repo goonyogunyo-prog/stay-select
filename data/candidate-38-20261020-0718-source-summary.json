@@ -1,0 +1,45 @@
+{
+  "verified_date": "2026-10-20",
+  "status": "STAGED_NOT_MERGED_2495_BASE_MISSING",
+  "source_method": "Official accommodation listing page directly read through web; not independently verified hotel official text",
+  "independent_hotel_official_body_fetched_count": 0,
+  "association_or_local_official_listing_only_count": 38,
+  "networks": [
+    {
+      "network": "箱根温泉旅館ホテル協同組合",
+      "pref": "神奈川県",
+      "area": "箱根温泉",
+      "url": "https://www.hakone-ryokan.or.jp/search/",
+      "count": 7
+    },
+    {
+      "network": "飯坂温泉観光協会・旅館協同組合",
+      "pref": "福島県",
+      "area": "飯坂温泉",
+      "url": "https://iizaka.com/stay/",
+      "count": 8
+    },
+    {
+      "network": "城崎温泉観光協会",
+      "pref": "兵庫県",
+      "area": "城崎温泉",
+      "url": "https://kinosaki-spa.gr.jp/accommodations_cat/rooms/",
+      "count": 8
+    },
+    {
+      "network": "那須温泉旅館協同組合",
+      "pref": "栃木県",
+      "area": "那須温泉",
+      "url": "https://www.nasuonsen.com/search/",
+      "count": 8
+    },
+    {
+      "network": "渋温泉旅館組合",
+      "pref": "長野県",
+      "area": "渋温泉",
+      "url": "https://shibuonsen.net/stay/",
+      "count": 7
+    }
+  ],
+  "caution": "Existing 2495-file base and 721 SHA manifest unavailable; duplicates checked against accessible 2457 base + 190 staged candidates only."
+}

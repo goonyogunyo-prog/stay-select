@@ -1,0 +1,32 @@
+[
+  {
+    "network": "城崎温泉観光協会",
+    "pref": "兵庫県",
+    "url": "https://kinosaki-spa.gr.jp/accommodations_cat/exterior/",
+    "count": 8
+  },
+  {
+    "network": "草津温泉旅館協同組合",
+    "pref": "群馬県",
+    "url": "https://www.yumomi.net/list/index.php?mode=&page=2&type=",
+    "count": 8
+  },
+  {
+    "network": "有馬温泉観光協会",
+    "pref": "兵庫県",
+    "url": "https://www.arima-onsen.com/pickup_category/search/page/2/",
+    "count": 7
+  },
+  {
+    "network": "道後温泉旅館協同組合・公式エリアガイド",
+    "pref": "愛媛県",
+    "url": "https://www.dogo.or.jp/stay/",
+    "count": 7
+  },
+  {
+    "network": "別府市旅館ホテル組合連合会",
+    "pref": "大分県",
+    "url": "https://oita-kumiai.com/",
+    "count": 8
+  }
+]

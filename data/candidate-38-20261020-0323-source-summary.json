@@ -1,0 +1,38 @@
+{
+  "verified_at": "2026-10-20",
+  "scope": "official association / union listing only",
+  "networks": [
+    {
+      "group": "奥日光湯元温泉旅館協同組合",
+      "pref": "栃木県",
+      "count": 12,
+      "official_url": "https://www.nikkoyumoto.com/yado/"
+    },
+    {
+      "group": "伊豆高原ペンション協同組合",
+      "pref": "静岡県",
+      "count": 8,
+      "official_url": "https://www.izu-pension.com/stay/"
+    },
+    {
+      "group": "下関旅館ホテル協同組合",
+      "pref": "山口県",
+      "count": 9,
+      "official_url": "https://www.shimonoseki-ryokan.com/list"
+    },
+    {
+      "group": "野沢温泉旅館組合",
+      "pref": "長野県",
+      "count": 4,
+      "official_url": "https://nozawa.jp/"
+    },
+    {
+      "group": "長門湯本温泉旅館協同組合",
+      "pref": "山口県",
+      "count": 5,
+      "official_url": "https://ryokan.yumotoonsen.com/ryokan/"
+    }
+  ],
+  "direct_hotel_body_fetched": 0,
+  "not_verified_against_2495": true
+}

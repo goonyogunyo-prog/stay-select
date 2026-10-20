@@ -1,0 +1,49 @@
+{
+  "networks": [
+    {
+      "organization": "黒川温泉観光旅館協同組合",
+      "area": "黒川温泉",
+      "pref": "熊本県",
+      "url": "https://www.kurokawaonsen.or.jp/availability/",
+      "count": 8
+    },
+    {
+      "organization": "下呂温泉旅館協同組合",
+      "area": "下呂温泉",
+      "pref": "岐阜県",
+      "url": "https://www.gero-spa.or.jp/",
+      "count": 8
+    },
+    {
+      "organization": "由布院温泉旅館組合",
+      "area": "由布院温泉",
+      "pref": "大分県",
+      "url": "https://yufuin-ryokan.com/members.html",
+      "count": 10
+    },
+    {
+      "organization": "玉造温泉旅館協同組合/松江観光協会玉造温泉支部",
+      "area": "玉造温泉",
+      "pref": "島根県",
+      "url": "https://tamayado.com/inn",
+      "count": 1
+    },
+    {
+      "organization": "土佐清水市観光協会",
+      "area": "足摺・土佐清水",
+      "pref": "高知県",
+      "url": "https://www.shimizu-kankou.com/mejica/m-stay/",
+      "count": 11
+    }
+  ],
+  "independent_official_body_directly_fetched": {
+    "こうの湯": "https://www.kounoyu.jp/facilities.html",
+    "TheMana Village": "https://themanavillage.com/",
+    "アシズリテルメ": "https://www.ashizurithermae.jp/"
+  },
+  "association_or_municipal_only": 35,
+  "all_38_name_pref_official_listing_checked": true,
+  "verified_on": "2026-10-20",
+  "site_operating_status_checked": false,
+  "merged": false
+}

@@ -1,0 +1,47 @@
+{
+  "checked_on": "2026-10-20",
+  "total": 38,
+  "base_for_duplicate_check": "2457 ZIP + 76 staged = 2533, total checked 2571",
+  "missing_latest_base": "2495 ZIP",
+  "independent_hotel_body_fetched": 2,
+  "association_only": 36,
+  "new_business_hotels": 0,
+  "official_listing_networks": [
+    {
+      "group": "阿蘇温泉観光旅館協同組合",
+      "pref": "熊本県",
+      "area": "阿蘇内牧温泉",
+      "official_url": "https://onsen.aso.ne.jp/link/",
+      "count": 9
+    },
+    {
+      "group": "別所温泉観光協会",
+      "pref": "長野県",
+      "area": "別所温泉",
+      "official_url": "https://www.bessho-spa.jp/mem/",
+      "count": 8
+    },
+    {
+      "group": "天橋立観光協会",
+      "pref": "京都府",
+      "area": "天橋立・宮津",
+      "official_url": "https://www.amanohashidate.jp/stay/",
+      "count": 8
+    },
+    {
+      "group": "伊豆湯河原温泉観光協会・旅館協同組合",
+      "pref": "静岡県",
+      "area": "伊豆湯河原温泉",
+      "official_url": "https://izuyu-kanko.jp/",
+      "count": 4
+    },
+    {
+      "group": "三朝温泉観光協会・旅館協同組合",
+      "pref": "鳥取県",
+      "area": "三朝温泉",
+      "official_url": "https://misasaonsen.jp/stay/",
+      "count": 9
+    }
+  ],
+  "note": "Association listings are used only for name and prefecture; no current rates, vacancies, cancellation rules, or operating status verified."
+}
