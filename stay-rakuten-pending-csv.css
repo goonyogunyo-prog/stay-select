@@ -1,0 +1,6 @@
+/* STAY SELECT | Rakuten unverified CSV export | 2026-10-18 */
+#ss-rakuten-pending-csv{background:#356d5b;border:1px solid #174c3e}
+#ss-rakuten-pending-csv:hover,#ss-rakuten-pending-csv:focus-visible{background:#204b3f}
+#ss-rakuten-pending-note{font-size:13px;color:#426253;line-height:1.65}
+#ss-rakuten-pending-status{font-size:13px;font-weight:600;color:#1d5849}
+@media(max-width:430px){#ss-rakuten-pending-csv{width:100%;white-space:normal;min-height:44px}}

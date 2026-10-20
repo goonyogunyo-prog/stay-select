@@ -1,0 +1,27 @@
+/* STAY SELECT / 2026-10-17: directory sorting and share tools */
+.ss-sort-tools{display:flex;flex-wrap:wrap;align-items:end;gap:14px 22px;background:#e8eee8;border:1px solid #d2dfd3;border-radius:14px;padding:18px 22px;margin:0 0 20px}
+.ss-sort-control{flex:1 1 250px;max-width:430px}
+.ss-sort-control label{display:block;font-size:13px;font-weight:800;color:#2a4b3d;margin-bottom:7px}
+.ss-sort-control select{width:100%;min-height:48px;background:#fff;border:1px solid #9eb6a4;border-radius:8px;padding:10px 12px;color:#173e31;font:inherit}
+.ss-share-control{flex:1 1 280px;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.ss-share-control button{min-height:48px;padding:10px 17px;background:#234d3d;color:#fff;border:0;border-radius:8px;font-weight:800;cursor:pointer}
+.ss-share-control button:hover{background:#32644d}
+.ss-share-control input{width:100%;max-width:560px;border:1px solid #90a799;border-radius:6px;padding:10px;font-size:12px}
+.ss-share-control span{font-size:12px;color:#2d5b46}
+.ss-sort-note{flex-basis:100%;margin:0;font-size:12px;color:#5b7164}
+@media(max-width:680px){.ss-sort-tools{padding:16px;gap:12px}.ss-sort-control,.ss-share-control{flex-basis:100%;max-width:none}.ss-share-control button{width:100%}}
+
+/* 2026-10-17 04:23 — favorites, local-only with export */
+.ss-favorites-tools{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;flex-basis:100%;padding:13px 0 4px;border-top:1px solid #c7d9cc}
+.ss-favorites-tools label{display:inline-flex;align-items:center;gap:8px;font-weight:800;color:#204a38;cursor:pointer}
+.ss-favorites-tools input[type=checkbox]{width:20px;height:20px;accent-color:#276047}
+.ss-favorites-tools strong{font-size:13px;color:#254e3d}
+.ss-favorites-tools button{background:#fff;color:#235340;border:1px solid #9db6a4;border-radius:9px;min-height:42px;padding:8px 12px;font-weight:700;cursor:pointer}
+.ss-favorites-tools button:hover{background:#d9eadd}
+.ss-favorites-tools small{flex-basis:100%;font-size:12px;line-height:1.5;color:#526c5d}
+.ss-favorites-tools span{font-size:12px;color:#315a44}
+.ss-favorites-tools textarea{flex-basis:100%;width:100%;min-height:96px;padding:10px;border:1px solid #a0b5a6;border-radius:8px;font:12px/1.5 monospace}
+.ss-favorite-pick{min-height:40px;border-radius:9px;padding:8px 13px;border:1px solid #aac4b0;background:#f3f8f4;color:#24503a;font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.ss-favorite-pick[aria-pressed=true]{background:#d9eadd;border-color:#6a9e7c}
+.ss-favorite-pick:focus-visible,.ss-favorites-tools button:focus-visible{outline:3px solid #2c8a58;outline-offset:2px}
+@media(max-width:680px){.ss-favorites-tools{align-items:stretch}.ss-favorites-tools label{flex-basis:100%}.ss-favorites-tools button{flex-basis:100%;min-height:48px}.ss-favorite-pick{min-height:44px}}

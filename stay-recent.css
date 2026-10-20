@@ -1,0 +1,16 @@
+/* STAY SELECT | 2026-10-17 08:18 | recently viewed stays */
+.ss-recent-panel{margin:20px 0 25px;padding:21px;border:1px solid #d7e4dc;border-radius:18px;background:linear-gradient(130deg,#f5faf6,#fff)}
+.ss-recent-panel[hidden]{display:none!important}
+.ss-recent-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px}
+.ss-recent-head h2{font-size:clamp(18px,2.4vw,24px);margin:0 0 5px;color:#204c3a}
+.ss-recent-head p{font-size:12px;color:#53695b;margin:0;line-height:1.7}
+.ss-recent-controls{display:flex;gap:10px;align-items:center;flex-shrink:0}
+.ss-recent-controls small{font-weight:750;color:#355a44}
+.ss-recent-clear{background:#fff;border:1px solid #9fb7a8;border-radius:9px;padding:9px 12px;min-height:44px;color:#28523d;font:inherit;font-size:13px;cursor:pointer}
+.ss-recent-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ss-recent-card{min-width:0;display:flex;flex-direction:column;gap:6px;border:1px solid #d8e7de;border-radius:12px;background:#fff;padding:14px;text-decoration:none;color:#214333;overflow-wrap:anywhere;transition:box-shadow .15s,border-color .15s}
+.ss-recent-card:hover{border-color:#70a58a;box-shadow:0 4px 12px #234a3415}
+.ss-recent-card small{font-size:11px;color:#63756a}.ss-recent-card strong{font-size:14px;line-height:1.5}.ss-recent-card span{margin-top:auto;font-size:12px;color:#2a7751}
+.ss-recent-card:focus-visible,.ss-recent-clear:focus-visible{outline:3px solid #2c8660;outline-offset:3px}
+@media(max-width:900px){.ss-recent-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.ss-recent-panel{padding:14px 12px}.ss-recent-head{flex-wrap:wrap}.ss-recent-controls{width:100%;justify-content:space-between}.ss-recent-list{gap:8px}.ss-recent-card{padding:11px}.ss-recent-card strong{font-size:13px}}
