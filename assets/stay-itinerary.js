@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const $=id=>document.getElementById(id),data=JSON.parse($('it-data').textContent),KEY='stayselect:itinerary:20261019-1422',q=$('it-q'),area=$('it-area'),state=$('it-state'),list=$('it-list'),status=$('it-status'),empty=$('it-empty');
+const $=id=>document.getElementById(id),data=JSON.parse($('it-data').textContent),KEY='stayselect:itinerary:20261019-2344',q=$('it-q'),area=$('it-area'),state=$('it-state'),list=$('it-list'),status=$('it-status'),empty=$('it-empty');
 if(data.length!==38||new Set(data.map(x=>x.id)).size!==38){status.textContent='施設データが一致しません。';return;}
 const h=(t,c,txt)=>{let e=document.createElement(t);if(c)e.className=c;if(txt!==undefined)e.textContent=txt;return e;};
 const fields=['inDate','inTime','outDate','outTime','transport','memo'];let saved={};try{const o=JSON.parse(localStorage.getItem(KEY)||'{}');if(o&&typeof o==='object'&&!Array.isArray(o))saved=o;}catch(_){}
