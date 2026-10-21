@@ -1,0 +1,7 @@
+/* Local-only notes: never printed or included in shared comparison URLs. */
+#compare-body [data-ss-compare-notes] th{background:#e8f4ed;color:#193b34;min-width:10rem}
+#compare-body .ss-compare-private-note{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65;max-width:22rem;background:#f7fbf8}
+#compare-body .ss-compare-note-empty{color:#56655e;font-size:.9rem}
+#compare-body .ss-compare-note-empty a{display:block;margin-top:.5rem;color:#1d6250;text-decoration:underline}
+.ss-compare-notes-warning{font-size:.87rem;color:#52645a;margin:.5rem 0 1.2rem}
+@media print{#compare-body [data-ss-compare-notes],.ss-compare-notes-warning{display:none!important}}

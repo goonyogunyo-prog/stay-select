@@ -1,0 +1,6 @@
+/* STAY SELECT - bulk save visible stays */
+.ss-bulk-favorites{margin:18px 0;padding:18px 20px;border:1px solid #d9e5dd;border-radius:18px;background:linear-gradient(120deg,#f4f9f4,#fff)}
+.ss-bulk-favorites h2{margin:0 0 6px;font-size:1.1rem;color:#173c32}.ss-bulk-favorites p{margin:6px 0 12px;line-height:1.65;font-size:.91rem}
+#ss-bulk-save{border:0;border-radius:12px;background:#1d5948;color:#fff;font-weight:700;padding:12px 16px;cursor:pointer;max-width:100%;white-space:normal;text-align:center}
+#ss-bulk-save:focus-visible{outline:3px solid #dfaa45;outline-offset:3px}#ss-bulk-save:hover{background:#164537}#ss-bulk-save-status{font-size:.86rem;color:#315c4d;margin:10px 0 0}
+@media(max-width:430px){.ss-bulk-favorites{padding:14px 12px;margin:12px 0}#ss-bulk-save{width:100%;font-size:.93rem}}
