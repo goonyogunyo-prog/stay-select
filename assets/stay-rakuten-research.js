@@ -16,9 +16,9 @@
    const search='https://www.google.com/search?q='+encodeURIComponent(query);
    rows.push([id,name,pref,search,'','']);
   }
-  if(cards.length!==2115||affiliates!==33||rows.length!==2083){status.textContent='施設数が想定と異なるため保存を中止しました。';return;}
+  if(cards.length!==2837||affiliates!==33||rows.length!==2805){status.textContent='施設数が想定と異なるため保存を中止しました。';return;}
   const data='\uFEFF'+rows.map(r=>r.map(csv).join(',')).join('\r\n')+'\r\n';
-  try{const url=URL.createObjectURL(new Blob([data],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='stay-select-rakuten-2082-research-searches.csv';a.hidden=true;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);status.textContent='2082施設分の検索リンクを保存しました。検索結果は未照合で、楽天予約URLではありません。';}
+  try{const url=URL.createObjectURL(new Blob([data],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='stay-select-rakuten-2804-research-searches.csv';a.hidden=true;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);status.textContent='2804施設分の検索リンクを保存しました。検索結果は未照合で、楽天予約URLではありません。';}
   catch(_){status.textContent='保存できませんでした。ブラウザ設定をご確認ください。';}
  });
 })();

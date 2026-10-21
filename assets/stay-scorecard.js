@@ -1,6 +1,6 @@
 /* STAY SELECT | personal scorecard: user-entered values only | 2026-10-19 */
 (()=>{'use strict';
-const el=id=>document.getElementById(id),data=JSON.parse(el('sc-data').textContent),list=el('sc-list'),search=el('sc-search'),area=el('sc-area'),sort=el('sc-sort'),status=el('sc-status'),KEY='stayselect:my-scorecard:20261019-1422',fields=[['budget','予算の納得度'],['access','アクセス'],['meal','食事'],['onsen','温泉・設備']];
+const el=id=>document.getElementById(id),data=JSON.parse(el('sc-data').textContent),list=el('sc-list'),search=el('sc-search'),area=el('sc-area'),sort=el('sc-sort'),status=el('sc-status'),KEY='stayselect:my-scorecard:20261019-2344',fields=[['budget','予算の納得度'],['access','アクセス'],['meal','食事'],['onsen','温泉・設備']];
 if(data.length!==38||new Set(data.map(x=>x.id)).size!==38){status.textContent='施設数・IDに不整合があります。';return;}
 const norm=v=>String(v||'').normalize('NFKC').toLowerCase().replace(/[\s\p{P}\p{S}]/gu,'');
 let state={};try{const v=JSON.parse(localStorage.getItem(KEY)||'{}');if(v&&typeof v==='object'&&!Array.isArray(v))state=v;}catch(_){state={};}
