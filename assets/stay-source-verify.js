@@ -1,0 +1,30 @@
+(()=>{'use strict';
+const $=id=>document.getElementById(id),key='stayselect:source-review:v1';
+const escCsv=v=>{let s=String(v??'');if(/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
+const norm=v=>String(v??'').normalize('NFKC').toLocaleLowerCase().replace(/[\p{White_Space}\p{P}\p{S}]/gu,'');
+let stays=[],filtered=[],shown=0,state={};
+try{const saved=JSON.parse(localStorage.getItem(key)||'{}');if(saved&&typeof saved==='object'&&!Array.isArray(saved))state=saved}catch{}
+const type=s=>s.direct_official_body_fetched===true?'direct':(/公式掲載のみ|公式施設一覧|公式一覧|観光協会|組合|自治体/.test(s.source_kind||'')?'listing':'other');
+const label=t=>t==='direct'?'宿独自公式本文取得':t==='listing'?'公式掲載のみ':'過去の分類・要確認';
+const setStatus=s=>{$('status').textContent=s};
+const safeUrl=s=>{try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)?u.href:''}catch{return ''}};
+const save=()=>{try{localStorage.setItem(key,JSON.stringify(state));return true}catch{setStatus('ブラウザの保存容量に達しました。JSONでバックアップしてください。');return false}};
+function download(name,body,mime){const u=URL.createObjectURL(new Blob([body],{type:mime})),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function item(s){const card=document.createElement('article');card.className='card';card.dataset.id=s.id;
+ const tag=document.createElement('span');tag.className='tag '+type(s);tag.textContent=label(type(s));card.append(tag);
+ const h=document.createElement('h2');h.textContent=s.name;card.append(h);
+ const m=document.createElement('div');m.className='meta';m.textContent=[s.pref,s.kind,s.group||s.source_kind||''].filter(Boolean).join(' · ');card.append(m);
+ const a=document.createElement('a');const url=s.own_official_url||s.source;a.href=safeUrl(url)||'#';a.textContent=s.direct_official_body_fetched?'宿独自公式を開く ↗':'公式掲載ページを開く ↗';a.target='_blank';a.rel='noopener noreferrer';if(!safeUrl(url)){a.removeAttribute('href');a.textContent='参照URL未登録'}card.append(a);
+ const checked=document.createElement('label');checked.className='check';const box=document.createElement('input');box.type='checkbox';box.checked=!!state[s.id]?.done;checked.append(box,document.createTextNode('自分で出典を確認した'));card.append(checked);
+ const note=document.createElement('label');note.textContent='確認メモ（個人用）';const input=document.createElement('input');input.type='text';input.maxLength=500;input.placeholder='例：公式の掲載日、気になる点';input.value=state[s.id]?.note||'';note.append(input);card.append(note);
+ box.addEventListener('change',()=>{state[s.id]={done:box.checked,note:input.value};save();refreshStats()});input.addEventListener('change',()=>{state[s.id]={done:box.checked,note:input.value};save()});return card}
+function refreshStats(){const done=stays.filter(s=>state[s.id]?.done).length;const d=stays.filter(s=>type(s)==='direct').length;const list=stays.filter(s=>type(s)==='listing').length;$('stats').textContent=`全${stays.length.toLocaleString('ja-JP')}件｜宿独自公式本文取得${d}件｜公式掲載のみ等${list}件｜自分で確認済み${done}件`;$('shown').textContent=`検索結果${filtered.length.toLocaleString('ja-JP')}件（表示${shown}件）`}
+function draw(reset){if(reset){shown=0;$('results').replaceChildren()}const frag=document.createDocumentFragment();for(const s of filtered.slice(shown,shown+50))frag.append(item(s));shown=Math.min(shown+50,filtered.length);$('results').append(frag);$('more').hidden=shown>=filtered.length;refreshStats()}
+function apply(){const q=norm($('query').value),p=$('pref').value,l=$('level').value,pr=$('progress').value;filtered=stays.filter(s=>(!q||norm([s.name,s.pref,s.kind,s.group,s.area].join(' ')).includes(q))&&(!p||s.pref===p)&&(!l||type(s)===l)&&(!pr||(pr==='done'===!!state[s.id]?.done)));draw(true)}
+for(const id of ['query','pref','level','progress'])$(id).addEventListener(id==='query'?'input':'change',apply);
+$('more').addEventListener('click',()=>draw(false));$('reset').addEventListener('click',()=>{for(const id of ['query','pref','level','progress'])$(id).value='';apply()});
+$('csv').addEventListener('click',()=>{const cols=['施設ID','宿名','都道府県','タイプ','出典レベル','公式参照URL','観光団体掲載URL','確認済み','確認メモ'];const csv=[cols.map(escCsv).join(',')].concat(filtered.map(s=>[s.id,s.name,s.pref,s.kind,label(type(s)),s.own_official_url||s.source,s.official_listing_url||s.source,state[s.id]?.done?'はい':'いいえ',state[s.id]?.note||''].map(escCsv).join(','))).join('\r\n');download('stay-source-review-20261020.csv','\ufeff'+csv,'text/csv;charset=utf-8');setStatus(`${filtered.length}施設のCSVを出力しました`)});
+$('backup').addEventListener('click',()=>{download('stay-source-review-backup.json',JSON.stringify({version:1,exported:new Date().toISOString(),reviews:state},null,2),'application/json');setStatus('確認メモをJSON出力しました')});
+$('restore').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{if(file.size>2_000_000)throw Error('ファイルサイズが大きすぎます');const j=JSON.parse(await file.text());if(j.version!==1||!j.reviews||typeof j.reviews!=='object'||Array.isArray(j.reviews))throw Error('対応形式ではありません');const ids=new Set(stays.map(s=>s.id));const next={...state};for(const [id,v] of Object.entries(j.reviews)){if(ids.has(id)&&v&&typeof v==='object')next[id]={done:!!v.done,note:String(v.note||'').slice(0,500)}}state=next;save();apply();setStatus('確認メモを復元しました')}catch(err){setStatus('復元失敗: '+err.message)}e.target.value=''});
+fetch('data/stays.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(d=>{if(!Array.isArray(d.stays)||d.stays.length!==d.count)throw Error('施設数不一致');stays=d.stays;const prefs=[...new Set(stays.map(s=>s.pref).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ja'));for(const p of prefs){const opt=document.createElement('option');opt.value=p;opt.textContent=p;$('pref').append(opt)}apply();setStatus('施設データの読み込みが完了しました')}).catch(e=>setStatus('施設データの読み込みに失敗しました: '+e.message));
+})();
