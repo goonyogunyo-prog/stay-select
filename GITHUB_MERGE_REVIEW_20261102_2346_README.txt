@@ -1,0 +1,1 @@
+GitHub main HEAD 88979175bd151bdba6949c517f0e50c653eb053e. Conflicts: data/stays.json,index.html,new-arrivals.html,sitemap.xml. Common ancestor full-value verification unfinished. DO NOT overwrite main. GitHub-only files preserved. Prior conflicting bytes archived at archive-20261102_2346/.

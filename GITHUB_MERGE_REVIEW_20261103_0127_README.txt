@@ -1,0 +1,4 @@
+GitHub main HEAD 88979175bd151bdba6949c517f0e50c653eb053e. Git tree 1268 entries/1258 blobs, truncated=false, FNV1a32=1522b89e.
+4 conflicts: data/stays.json, index.html, new-arrivals.html, sitemap.xml.
+The main data/stays.json contains 4965 stay records whose values/order were previously reported matching the first 4965 local records; header metadata differs. This run did not independently re-fetch all 1258 blob bodies or prove the common ancestor for the remaining 3 files. No three-way merge performed. Preserve all GitHub-only files and 4 old bytes in archive-20261103-0127. No main overwrite or publication.
+Safe next step: capture a common ancestor commit and byte-exact GitHub blobs for each conflicting file; compare ancestor/main/local; isolate changes, resolve manually; test before any write.

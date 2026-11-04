@@ -1,0 +1,1 @@
+2026-11-01 17:22 JST: main HEAD 88979175bd151bdba6949c517f0e50c653eb053e; 4 stay-arrival-trio JS paths (2547 bytes each, blob aca2a3ec03f8fc5432371cea4eb3714666d5590f) and stay-transport-budget.css (3594 bytes, blob 41eb2464e38dd40b5c396225f79354437ccf2309) restored byte-identically. GitHub main not modified.
