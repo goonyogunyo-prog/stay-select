@@ -1,0 +1,30 @@
+(()=>{'use strict';
+const KEY='stay-select-cash-atm-plan-v1',LIMIT=6;
+const FIELDS=[['payment','宿の支払方法（確認結果）','select',['未確認','現金のみ','カード対応','電子決済対応','プランによる']],['atm','周辺ATMの場所・営業時間','text'],['withdraw','ATMの出金可否・手数料（確認結果）','text'],['transport','現地交通の現金必要額（円）','number'],['food','食事・買い出しの現金必要額（円）','number'],['fee','宿の追加料金・入湯税等の現金必要額（円）','number'],['reserve','予備の現金（円）','number'],['alternative','現金不足時の代替手段','textarea'],['checkedAt','確認日','date'],['evidence','確認元URL（公式サイト等）','url'],['memo','確認メモ','textarea']];
+const MONEY=['transport','food','fee','reserve'];let stays=[],records=[];
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const valid=r=>r&&typeof r==='object'&&typeof r.id==='string'&&typeof r.name==='string'&&typeof r.pref==='string';
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(records));$('saved').textContent='この端末に保存しました';}catch(e){$('saved').textContent='保存できません。JSONで書き出してください';}}
+function restore(){try{const a=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(a))records=a.filter(valid).slice(0,LIMIT)}catch(e){records=[]}}
+function amount(v){const n=Number(v);return Number.isFinite(n)&&n>0?Math.min(n,100000000):0;}
+function sum(r){return MONEY.reduce((s,k)=>s+amount(r[k]),0);}
+function control(f,r){let v=r[f[0]]??'',tag='';if(f[2]==='select'){tag='<select data-field="'+f[0]+'">'+f[3].map(x=>'<option value="'+esc(x)+'" '+(v===x?'selected':'')+'>'+esc(x)+'</option>').join('')+'</select>';}else if(f[2]==='textarea'){tag='<textarea data-field="'+f[0]+'">'+esc(v)+'</textarea>';}else{tag='<input data-field="'+f[0]+'" type="'+f[2]+'" '+(f[2]==='number'?'min="0" step="1" inputmode="numeric" ':'')+'value="'+esc(v)+'">';}return '<label>'+esc(f[1])+tag+'</label>';}
+function draw(){const root=$('cards');root.replaceChildren();records.forEach((r,i)=>{const div=document.createElement('article');div.className='card';div.dataset.index=String(i);div.innerHTML='<h3>'+esc(r.name)+'</h3><div class="subtitle">'+esc(r.pref)+'</div><p class="estimate">現地で用意する現金の概算：<strong data-total>'+sum(r).toLocaleString('ja-JP')+'円</strong></p>'+FIELDS.map(f=>control(f,r)).join('')+'<button class="remove" type="button">候補から削除</button>';root.append(div);});if(!records.length)root.textContent='まだ候補はありません。上の検索から追加してください。';}
+function add(stay){if(records.some(x=>x.id===stay.id))return;if(records.length>=LIMIT){$('saved').textContent='比較は最大6宿までです';return;}records.push({id:stay.id,name:stay.name,pref:stay.pref});persist();draw();}
+function find(){const q=$('query').value.normalize('NFKC').toLocaleLowerCase().trim(),matches=q?stays.filter(x=>(x.name+' '+x.pref).normalize('NFKC').toLocaleLowerCase().includes(q)).slice(0,30):[];const root=$('results');root.replaceChildren();$('result-count').textContent=q?('検索候補：'+matches.length+'件（最大30件表示）'):'施設名または県を入力してください';for(const s of matches){const row=document.createElement('div');row.className='result';const label=document.createElement('span');label.textContent=s.name+'（'+s.pref+'）';const btn=document.createElement('button');btn.type='button';btn.textContent=records.some(r=>r.id===s.id)?'追加済み':'候補に追加';btn.disabled=records.some(r=>r.id===s.id);btn.addEventListener('click',()=>{add(s);find()});row.append(label,btn);root.append(row);}}
+function exportRows(){return records.map(r=>{const out={施設名:r.name,都道府県:r.pref};FIELDS.forEach(f=>out[f[1]]=r[f[0]]||'');out['現金概算合計（円）']=sum(r);return out;});}
+function download(name,body,mime){const blob=new Blob([body],{type:mime});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),500);}
+function csvCell(x){let s=String(x??'');if(/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
+function toCSV(){const rows=exportRows(),head=['施設名','都道府県',...FIELDS.map(f=>f[1]),'現金概算合計（円）'];return '\uFEFF'+[head,...rows.map(r=>head.map(h=>r[h]))].map(a=>a.map(csvCell).join(',')).join('\r\n');}
+async function loadJSON(file){if(!file)return;try{if(file.size>1024*1024)throw Error('ファイルが大きすぎます');const raw=JSON.parse(await file.text());if(!Array.isArray(raw))throw Error('JSON配列ではありません');const safe=raw.filter(valid).slice(0,LIMIT).map(r=>{const o={id:r.id.slice(0,60),name:r.name.slice(0,180),pref:r.pref.slice(0,50)};FIELDS.forEach(f=>o[f[0]]=String(r[f[0]]??'').slice(0,1000));return o});records=safe;persist();draw();find();$('saved').textContent='JSONを復元しました';}catch(e){$('saved').textContent='JSONを読み込めません：'+e.message}}
+$('cards').addEventListener('input',e=>{const field=e.target.dataset.field,card=e.target.closest('.card');if(field&&card){const r=records[Number(card.dataset.index)];r[field]=e.target.value;if(MONEY.includes(field))card.querySelector('[data-total]').textContent=sum(r).toLocaleString('ja-JP')+'円';persist();}});
+$('cards').addEventListener('change',e=>{const field=e.target.dataset.field,card=e.target.closest('.card');if(field&&card){records[Number(card.dataset.index)][field]=e.target.value;persist();}});
+$('cards').addEventListener('click',e=>{if(e.target.matches('.remove')){const c=e.target.closest('.card');records.splice(Number(c.dataset.index),1);persist();draw();find();}});
+$('query').addEventListener('input',find);
+$('csv').addEventListener('click',()=>download('stay-cash-atm-plan.csv',toCSV(),'text/csv;charset=utf-8'));
+$('json').addEventListener('click',()=>download('stay-cash-atm-plan.json',JSON.stringify(records,null,2),'application/json;charset=utf-8'));
+$('import').addEventListener('change',e=>loadJSON(e.target.files[0]));
+$('clear').addEventListener('click',()=>{if(records.length&&!confirm('保存中の確認メモをすべて削除しますか？'))return;records=[];persist();draw();find()});
+restore();draw();find();fetch('data/stays.json').then(r=>{if(!r.ok)throw Error('宿データを取得できません');return r.json()}).then(d=>{stays=Array.isArray(d.stays)?d.stays:[];$('result-count').textContent='全国'+stays.length.toLocaleString('ja-JP')+'施設から検索できます';}).catch(e=>{$('result-count').textContent='宿データの読み込みに失敗しました：'+e.message});
+})();

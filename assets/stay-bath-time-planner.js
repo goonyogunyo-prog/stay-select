@@ -1,0 +1,26 @@
+(()=>{'use strict';
+const $=id=>document.getElementById(id),KEY='stay-select-bath-times-v1',MAX=6;
+let stays=[],records=[];
+const fields=[['arrival','宿への到着予定','time'],['open','大浴場開始時刻','time'],['close','大浴場終了時刻','time'],['last','最終受付時刻','time'],['switch','男女入替・清掃時間','text'],['private','貸切風呂の時間・予約要否','text'],['confirm','確認日','date'],['source','確認した公式URL','url'],['memo','注意点・メモ','text']];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const validTime=s=>/^\d\d:\d\d$/.test(s||'')?Number(s.slice(0,2))*60+Number(s.slice(3)):null;
+function minutes(arrival,open,close,last){const a=validTime(arrival),o=validTime(open),c=validTime(close),l=validTime(last);if(a===null||o===null||c===null)return null;const end=c<=o?c+1440:c;const start=Math.max(end>1440&&a<o&&o-a>720?a+1440:a,o);const lim=l===null?end:(l<o?(end>1440?l+1440:o):l);return Math.max(0,Math.min(end,lim)-start);}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(records))}catch(e){notice('保存できませんでした。ブラウザ設定をご確認ください。')}}
+function notice(s){$('notice').textContent=s}
+function refreshSelect(){const q=$('search').value.trim().toLocaleLowerCase();const matches=stays.filter(s=>!q||String(s.name+' '+s.pref).toLocaleLowerCase().includes(q)).slice(0,80);$('stay').innerHTML='<option value="">宿を選択してください</option>'+matches.map(s=>'<option value="'+esc(s.id)+'">'+esc(s.name)+'｜'+esc(s.pref)+'</option>').join('')}
+function render(){const box=$('cards');box.innerHTML=records.map((r,i)=>{const m=minutes(r.arrival,r.open,r.close,r.last);return '<article class="card"><h3>'+esc(r.name)+' <small>('+esc(r.pref)+')</small></h3><p class="result">'+(m===null?'到着・開始・終了時刻を入力してください':'入力時刻からの入浴可能目安：'+Math.floor(m/60)+'時間'+m%60+'分')+'</p><div class="fields">'+fields.map(([key,label,type])=>'<label class="'+(['switch','private','source','memo'].includes(key)?'wide':'')+'">'+esc(label)+'<input data-index="'+i+'" data-field="'+key+'" type="'+type+'" value="'+esc(r[key]||'')+'" '+(type==='url'?'placeholder="https://..."':'')+'></label>').join('')+'</div><button class="danger" data-delete="'+i+'" type="button">削除</button></article>'}).join('')||'<p>宿を追加すると比較できます。</p>'}
+function download(name,content,type){const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function csvValue(x){return '"'+String(x??'').replace(/"/g,'""')+'"'}
+function exportCsv(){const cols=['name','pref',...fields.map(x=>x[0]),'available_minutes'];const lines=[['施設名','県',...fields.map(x=>x[1]),'入浴可能目安(分)'].map(csvValue).join(',')];for(const r of records)lines.push(cols.map(c=>csvValue(c==='available_minutes'?(minutes(r.arrival,r.open,r.close,r.last)??''):r[c])).join(','));download('stay-bath-time-planner.csv','\ufeff'+lines.join('\r\n'),'text/csv;charset=utf-8')}
+function sanitize(raw){if(!Array.isArray(raw)||raw.length>MAX)throw Error('最大6宿の配列を指定してください');return raw.map(x=>{if(!x||typeof x!=='object'||!stays.some(s=>s.id===x.id))throw Error('不明な施設IDがあります');const s=stays.find(v=>v.id===x.id),r={id:s.id,name:s.name,pref:s.pref};for(const [k] of fields)r[k]=typeof x[k]==='string'?x[k].slice(0,800):'';return r})}
+$('search').addEventListener('input',refreshSelect);
+$('add').addEventListener('click',()=>{const s=stays.find(v=>v.id===$('stay').value);if(!s)return notice('宿を選んでください');if(records.some(r=>r.id===s.id))return notice('この宿は追加済みです');if(records.length>=MAX)return notice('比較は最大6宿です');records.push({id:s.id,name:s.name,pref:s.pref});save();render();notice('追加しました')});
+$('cards').addEventListener('input',e=>{const el=e.target,i=Number(el.dataset.index),k=el.dataset.field;if(!Number.isInteger(i)||!fields.some(f=>f[0]===k)||!records[i])return;records[i][k]=el.value.slice(0,800);save();const m=minutes(records[i].arrival,records[i].open,records[i].close,records[i].last);const p=el.closest('.card').querySelector('.result');p.textContent=m===null?'到着・開始・終了時刻を入力してください':'入力時刻からの入浴可能目安：'+Math.floor(m/60)+'時間'+m%60+'分'});
+$('cards').addEventListener('click',e=>{const i=e.target.dataset.delete;if(i===undefined)return;records.splice(Number(i),1);save();render()});
+$('csv').addEventListener('click',exportCsv);
+$('json').addEventListener('click',()=>download('stay-bath-time-planner.json',JSON.stringify(records,null,2),'application/json'));
+$('clear').addEventListener('click',()=>{if(!confirm('記録をすべて削除しますか？'))return;records=[];save();render()});
+$('import').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{records=sanitize(JSON.parse(await f.text()));save();render();notice('JSONを復元しました')}catch(err){notice('復元できません：'+err.message)}e.target.value='' });
+(async()=>{try{const r=await fetch('data/stays.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const j=await r.json();stays=j.stays||[];try{records=sanitize(JSON.parse(localStorage.getItem(KEY)||'[]'))}catch(e){records=[]}refreshSelect();render();notice(stays.length.toLocaleString('ja-JP')+'施設を読み込みました')}catch(e){notice('宿データを読み込めません：'+e.message)}})();
+window.__stayBathTimeTest={minutes,sanitize:(a)=>sanitize(a),getRecords:()=>records};
+})();

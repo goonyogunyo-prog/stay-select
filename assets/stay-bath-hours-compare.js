@@ -1,0 +1,35 @@
+(()=>{'use strict';
+const KEY='stay_select_bath_hours_v1', $=id=>document.getElementById(id);
+let all=[],selected=[],details={},want='20:30',duration=40;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const quote=s=>{s=String(s??'');return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s};
+const time=s=>/^([01]\d|2[0-3]):[0-5]\d$/.test(String(s))?Number(s.slice(0,2))*60+Number(s.slice(3)):NaN;
+const def=()=>({open:'15:00',close:'09:00',cleanStart:'',cleanEnd:'',switchStart:'',switchEnd:'',source:'',checked:'',memo:''});
+function status(s){$('status').textContent=s}
+function intervals(start,end,anchor){if(!Number.isFinite(start)||!Number.isFinite(end))return null;let s=start;if(s<anchor)s+=1440;let e=end;if(e<=start)e+=1440;if(e<s)e+=1440;return[s,e]}
+function outcome(d){const a=time(d.open),b=time(d.close),w=time(want),dur=Number(duration);
+ if(!Number.isFinite(a)||!Number.isFinite(b)||!Number.isFinite(w)||!Number.isInteger(dur)||dur<1||dur>240)return{state:'unknown',text:'入浴時刻・利用時間を確認してください'};
+ let e=b<=a?b+1440:b,from=w<a?w+1440:w,to=from+dur;
+ if(from<a||to>e)return{state:'warn',text:'入力上、入浴希望時間が浴場の利用可能時間外です'};
+ for(const [s1,s2,label] of [[d.cleanStart,d.cleanEnd,'清掃・休止時間'],[d.switchStart,d.switchEnd,'男女入替時間']]){
+  if(!s1&&!s2)continue;
+  const t1=time(s1),t2=time(s2);if(!Number.isFinite(t1)||!Number.isFinite(t2))return{state:'unknown',text:label+'の時刻が片方未入力です'};
+  const pair=intervals(t1,t2,a);if(pair&&from<pair[1]&&to>pair[0])return{state:'warn',text:'入力上、希望時刻が'+label+'と重なります'};
+ }
+ return{state:'ok',text:'入力条件上は希望時間を確保できます（実際の利用可否は宿へ確認）'};
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({version:1,selected,details,want,duration}));status('ブラウザに保存しました')}catch(e){status('保存できませんでした: '+e.message)}}
+function drawResults(){const q=$('search').value.trim().toLowerCase(),words=q.split(/\s+/).filter(Boolean);const matches=all.filter(s=>words.every(w=>(s.name+' '+s.pref).toLowerCase().includes(w))).slice(0,35);
+ $('results').innerHTML=matches.map(s=>'<div class="result"><span>'+esc(s.name)+' <small>('+esc(s.pref)+')</small></span><button type="button" data-add="'+esc(s.id)+'" '+(selected.includes(s.id)||selected.length>=4?'disabled':'')+'>追加</button></div>').join('')||'<p>該当施設はありません。</p>';
+ $('results').querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>add(b.dataset.add)));
+}
+function add(id){if(selected.length>=4||selected.includes(id)||!all.some(s=>s.id===id))return;selected.push(id);details[id]=def();draw();save()}
+function draw(){drawResults();const lookup=new Map(all.map(s=>[s.id,s]));$('selected').innerHTML=selected.map(id=>{const s=lookup.get(id);if(!s)return'';const d=details[id]||def(),o=outcome(d);const fields=[['open','大浴場 開始','time'],['close','大浴場 終了','time'],['cleanStart','清掃・休止 開始','time'],['cleanEnd','清掃・休止 終了','time'],['switchStart','男女入替 開始','time'],['switchEnd','男女入替 終了','time'],['source','公式案内URL','url'],['checked','確認日','date']];return'<article class="card" data-card="'+esc(id)+'"><h3>'+esc(s.name)+'</h3><p>'+esc(s.pref)+'</p><div class="fields">'+fields.map(([k,label,type])=>'<label>'+label+'<input type="'+type+'" data-field="'+k+'" value="'+esc(d[k]||'')+'"></label>').join('')+'</div><label>確認・問い合わせメモ<textarea data-field="memo">'+esc(d.memo||'')+'</textarea></label><div class="outcome '+esc(o.state==='ok'?'':o.state)+'" role="status">'+esc(o.text)+'</div><button type="button" class="remove" data-remove="'+esc(id)+'">比較から外す</button></article>'}).join('')||'<p>宿を追加してください。</p>';
+ $('selected').querySelectorAll('[data-card]').forEach(card=>{const id=card.dataset.card;card.querySelectorAll('[data-field]').forEach(inp=>inp.addEventListener('change',()=>{details[id][inp.dataset.field]=inp.value;draw();save()}));card.querySelector('[data-remove]').addEventListener('click',()=>{selected=selected.filter(x=>x!==id);delete details[id];draw();save()})});
+ $('summary').textContent='比較中：'+selected.length+' / 4宿';}
+function download(filename,content,type){const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function exportCsv(){const head=['id','施設名','都道府県','入浴希望時刻','希望分数','大浴場開始','大浴場終了','清掃開始','清掃終了','男女入替開始','男女入替終了','公式案内URL','確認日','メモ','入力条件上の結果'];const lookup=new Map(all.map(s=>[s.id,s]));const rows=selected.map(id=>{const s=lookup.get(id),d=details[id]||def();return[id,s?.name,s?.pref,want,duration,d.open,d.close,d.cleanStart,d.cleanEnd,d.switchStart,d.switchEnd,d.source,d.checked,d.memo,outcome(d).text].map(quote).join(',')});download('stay-bath-hours-compare.csv','\uFEFF'+head.map(quote).join(',')+'\r\n'+rows.join('\r\n'),'text/csv;charset=utf-8')}
+function restore(o){if(!o||o.version!==1||!Array.isArray(o.selected)||typeof o.details!=='object'||o.details===null)throw Error('バックアップ形式が違います');const valid=new Set(all.map(s=>s.id));selected=[...new Set(o.selected.filter(id=>typeof id==='string'&&valid.has(id)))].slice(0,4);details={};for(const id of selected){const raw=o.details[id]||{};details[id]=def();for(const k of Object.keys(details[id]))if(typeof raw[k]==='string')details[id][k]=raw[k].slice(0,2000)}if(Number.isInteger(Number(o.duration)))duration=Math.min(240,Math.max(1,Number(o.duration)));if(Number.isFinite(time(o.want)))want=o.want;$('want').value=want;$('duration').value=duration;draw();save()}
+async function init(){try{const r=await fetch('data/stays.json',{cache:'no-store'});if(!r.ok)throw Error('施設データ HTTP '+r.status);const j=await r.json();all=j.stays;if(!Array.isArray(all)||all.length<7999)throw Error('施設データ不足');$('total').textContent=all.length.toLocaleString('ja-JP');try{const saved=localStorage.getItem(KEY);if(saved)restore(JSON.parse(saved))}catch(e){status('保存データを復元できませんでした: '+e.message)}draw();status('施設データを読み込みました。時刻は必ず宿の公式案内で確認してください。')}catch(e){status('読み込みに失敗しました: '+e.message)}}
+$('search').addEventListener('input',drawResults);$('want').addEventListener('change',e=>{want=e.target.value;draw();save()});$('duration').addEventListener('change',e=>{duration=Math.max(1,Math.min(240,Number(e.target.value)||40));draw();save()});$('save').addEventListener('click',save);$('csv').addEventListener('click',exportCsv);$('json').addEventListener('click',()=>download('stay-bath-hours-backup.json',JSON.stringify({version:1,selected,details,want,duration},null,2),'application/json;charset=utf-8'));$('import').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{restore(JSON.parse(await f.text()));status('JSONから復元しました')}catch(err){status('復元に失敗しました: '+err.message)}e.target.value=''});$('reset').addEventListener('click',()=>{selected=[];details={};want='20:30';duration=40;$('want').value=want;$('duration').value=duration;draw();save()});init();
+})();
