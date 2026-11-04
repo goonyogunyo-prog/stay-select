@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>宿泊施設の出典比較｜STAY SELECT</title>
+<meta name="description" content="施設の公式掲載元と確認日を最大3件で比較。料金・空室・設備は未確認として扱い、予約前に調べる項目を整理。">
+<link rel="stylesheet" href="assets/stay-verified-compare.css"></head>
+<body><header><div class="wrap"><a href="index.html">← STAY SELECT トップ</a><h1>出典付き・宿泊候補比較</h1><p>全国の掲載施設から最大3件を並べ、確認できた情報と未確認の条件を見比べます。予約可能性・価格・設備の保証はありません。</p></div></header>
+<main class="wrap"><section class="panel"><h2>1. 候補を探す</h2><label for="search">施設名・都道府県・施設ID</label><input id="search" type="search" placeholder="例：箱根、温泉、stay-001" autocomplete="off"><p id="load-status" role="status">施設データを読み込み中…</p><div id="search-results" class="results" aria-live="polite"></div></section>
+<section class="panel"><h2>2. 候補を比較する <span id="selected-count">0 / 3</span></h2><p>同一施設を二重に追加できません。施設名と都道府県、掲載元、出典確認日を表示します。公式出典はリンク先で再確認してください。</p><div id="compare-results" class="compare-grid"><p class="muted">上の検索結果から候補を追加してください。</p></div><div class="actions"><button type="button" id="export-csv" disabled>比較表をCSV出力</button><button type="button" id="copy-summary" disabled>確認メモをコピー</button><button type="button" id="clear-selection" disabled>候補をクリア</button></div><p id="feedback" role="status"></p></section>
+<section class="panel"><h2>3. 予約前の確認事項</h2><ul><li>料金・空室・営業状況・キャンセル規定は掲載時点でも未検証です。</li><li>貸切風呂、露天風呂付き客室、飲み放題、ケーキ、送迎等は施設ごとに直接確認してください。</li><li>楽天トラベル個別施設URLが未照合の場合、予約リンクを生成しません。</li></ul><p class="muted">候補IDはこの端末のlocalStorageに最大3件保存します。外部送信・自動予約・成果URL発行は行いません。</p></section></main>
+<script defer src="assets/stay-verified-compare.js"></script></body></html>

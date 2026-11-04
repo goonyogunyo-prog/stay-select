@@ -1,0 +1,11 @@
+STAY SELECT 安全累積更新 20261103_1020 JST
+起点: STAY_SELECT_20261103_0921_CUMULATIVE_13254_STAYS_OFFICIAL_38_MEAL_INQUIRY_GITHUB_4_CONFLICTS_2691.zip
+起点SHA256: 3b405fa076cee3a237cd1f1ac0e5ce6eb4778bef8c06d7293b5b3a6ce7aa181f
+起点2691件のCRC32/bytes/SHA256/Git blob SHA1とmanifest全件PASS。
+新規追加: 到着・チェックイン余裕時間比較機能（HTML/CSS/JS 3件）。
+旧ファイル全2691件は完全バイト不変。削除0、更新0、追加3。
+施設件数は13254件据え置き。公式5団体調査と新規38件追加は今回未達（0件）。
+GitHub競合4件は未マージ。GitHub mainへは一切書き込まない。
+楽天全施設3列CSVは旧版と完全同一バイトで別途納品。33件個別URL、13221件検索URL、商品画像空欄。
+新機能は単独HTMLで閲覧可能。index.htmlへのリンク追加は競合保全のため保留。
+公開実ブラウザ・本番HTTP・楽天成果計測・施設条件は未検証。
