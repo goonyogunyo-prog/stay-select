@@ -1,0 +1,13 @@
+(function(){'use strict';
+const $=id=>document.getElementById(id);
+function parseTime(v){if(!/^\d{2}:\d{2}$/.test(v))throw Error('時刻はHH:MMで入力してください');const [h,m]=v.split(':').map(Number);if(h>23||m>59)throw Error('時刻が不正です');return h*60+m;}
+function fmt(n){return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');}
+function number(v,label,min,max){const n=Number(v);if(v===''||!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max)throw Error(label+'は'+min+'～'+max+'の整数で入力してください');return n;}
+function compute(o){const dep=parseTime(o.depart),meal=number(o.meal,'朝食時間',1,180),buf=number(o.buffer,'出発余裕',0,180);const result=[];for(const s of o.hotels){const start=parseTime(s.start),end=parseTime(s.end),walk=number(s.walk,'移動時間',0,180);if(end<=start)throw Error('朝食終了時刻は開始時刻より後にしてください');const latest=Math.min(end-meal,dep-walk-buf-meal),feasible=latest>=start;result.push({name:s.name||'名称未入力',feasible,earliest:fmt(start),latest:latest>=0?fmt(latest):'当日内に不可',minutes:Math.max(0,latest-start),walk});}return result;}
+function inputs(){return {depart:$('depart').value,meal:$('meal').value,buffer:$('buffer').value,hotels:['A','B'].map(s=>({name:$('name'+s).value.trim(),start:$('start'+s).value,end:$('end'+s).value,walk:$('walk'+s).value}))};}
+function safeCell(v){let s=String(v);if(/^[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
+function csvRows(rows){return '\uFEFF'+'施設名,朝食可能,朝食開始,最終開始時刻,開始余裕分,食事会場移動分\r\n'+rows.map(r=>[r.name,r.feasible?'可能':'不可',r.earliest,r.latest,r.minutes,r.walk].map(safeCell).join(',')).join('\r\n')+'\r\n';}
+let last=null;
+function render(){try{const res=compute(inputs());last=res;$('error').textContent='';const root=$('result');root.textContent='';for(const r of res){const art=document.createElement('article');const title=document.createElement('strong');title.textContent=r.name+'：'+(r.feasible?'朝食時間を確保できる見込み':'朝食時間を確保できません');const p=document.createElement('p');p.textContent='朝食開始 '+r.earliest+'／最終開始 '+r.latest+'／開始可能な余裕 '+r.minutes+'分';art.append(title,p);root.appendChild(art);}}catch(e){last=null;$('result').textContent='';$('error').textContent=e.message;}}
+function save(){if(!last)render();if(!last)return;const blob=new Blob([csvRows(last)],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='stay-breakfast-departure-compare.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
+window.StayBreakfastPlanner={compute,csvRows};$('calc').addEventListener('click',render);$('csv').addEventListener('click',save);render();})();

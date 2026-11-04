@@ -1,0 +1,12 @@
+(function(){'use strict';
+const specs={nights:[0,14],rooms:[1,20],roomPrice:[0,1000000],transport:[0,10000000],meals:[0,10000000],other:[0,10000000],refund:[0,10000000]};
+function calculate(values){for(const [key,[min,max]] of Object.entries(specs)){const n=values[key];if(!Number.isSafeInteger(n)||n<min||n>max)throw Error(key+' は範囲内の整数を入力してください。');}
+const lodging=values.nights*values.rooms*values.roomPrice,gross=lodging+values.transport+values.meals+values.other,net=gross-values.refund;return {...values,lodging,gross,net};}
+function csv(o){const pairs=[['項目','金額・数量'],['追加泊数',o.nights],['部屋数',o.rooms],['1室1泊追加料金',o.roomPrice],['宿泊費追加合計',o.lodging],['交通費差額',o.transport],['食費追加',o.meals],['その他追加',o.other],['確定返金・補償',o.refund],['追加支出総額',o.gross],['返金控除後差額',o.net]];return '\ufeff'+pairs.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n')+'\r\n';}
+if(typeof module!=='undefined'&&module.exports)module.exports={calculate,csv};
+if(typeof document==='undefined')return;
+const $=id=>document.getElementById(id),form=$('budget-form'),out=$('result'),message=$('message'),copy=$('copy'),download=$('download');let last=null;
+form.addEventListener('submit',e=>{e.preventDefault();message.textContent='';try{const v={};for(const key of Object.keys(specs))v[key]=Number($(key).value);last=calculate(v);const fmt=n=>new Intl.NumberFormat('ja-JP').format(n)+'円';out.replaceChildren();const rows=[['延泊費',fmt(last.lodging)],['追加支出の合計',fmt(last.gross)],['確定返金・補償',fmt(last.refund)],['返金控除後の差額',fmt(last.net)]];for(const [label,value] of rows){const p=document.createElement('p');p.textContent=label+'：'+value;if(label==='返金控除後の差額')p.className='total';out.append(p);}copy.disabled=false;download.disabled=false;}catch(err){last=null;out.replaceChildren();message.textContent=err.message;copy.disabled=true;download.disabled=true;}});
+copy.addEventListener('click',async()=>{if(!last)return;const t='欠航・遅延時の追加費用\n延泊費 '+last.lodging+'円\n追加支出 '+last.gross+'円\n確定返金 '+last.refund+'円\n差額 '+last.net+'円';try{await navigator.clipboard.writeText(t);message.textContent='結果をコピーしました。';}catch(_){message.textContent='コピーできませんでした。ブラウザの権限をご確認ください。';}});
+download.addEventListener('click',()=>{if(!last)return;const blob=new Blob([csv(last)],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='stay-ferry-delay-budget.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);});
+})();

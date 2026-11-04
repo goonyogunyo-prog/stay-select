@@ -1,0 +1,10 @@
+"use strict";
+(function(root){
+function parseLocal(s){if(typeof s!=="string"||!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s))throw Error("日時を入力してください");const t=new Date(s);if(!Number.isFinite(t.getTime())||t.getFullYear()!==+s.slice(0,4)||t.getMonth()+1!==+s.slice(5,7)||t.getDate()!==+s.slice(8,10)||t.getHours()!==+s.slice(11,13)||t.getMinutes()!==+s.slice(14,16))throw Error("有効な日時を入力してください");return t.getTime()}
+function calculate(one){const start=parseLocal(one.checkin),end=parseLocal(one.checkout),price=Number(one.price);if(!Number.isFinite(price)||price<0||price>1e10)throw Error("0円以上の有効な料金を入力してください");const hours=(end-start)/3600000;if(!Number.isFinite(hours)||hours<=0||hours>24*365)throw Error("チェックアウトはチェックインより後、1年以内にしてください");return {hours:Math.round(hours*100)/100,price:Math.round(price),perHour:Math.round(price/hours*100)/100}}
+function compare(a,b){return {A:calculate(a),B:calculate(b)}}
+function csvEscape(s){const v=String(s);return '"'+v.replace(/"/g,'""')+'"'}
+function csv(result){return '\ufeff候補,滞在時間（時間）,宿泊費（円）,1時間あたり（円）\r\n'+[['A',result.A],['B',result.B]].map(([k,v])=>[k,v.hours,v.price,v.perHour].map(csvEscape).join(',')).join('\r\n')+'\r\n'}
+root.StayEffectiveHours={calculate,compare,csv};
+if(typeof document!=="undefined")document.addEventListener('DOMContentLoaded',()=>{const el=id=>document.getElementById(id),read=k=>({checkin:el(k+'-in').value,checkout:el(k+'-out').value,price:el(k+'-price').value});let last=null;function run(){try{last=compare(read('a'),read('b'));el('result').textContent='候補A: '+last.A.hours+'時間・1時間あたり約'+last.A.perHour.toLocaleString()+'円 ／ 候補B: '+last.B.hours+'時間・1時間あたり約'+last.B.perHour.toLocaleString()+'円';return last}catch(e){last=null;el('result').textContent=e.message;return null}}el('calculate').addEventListener('click',run);el('csv').addEventListener('click',()=>{if(!last&&!run())return;const blob=new Blob([csv(last)],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='stay-effective-hours.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});run()})
+})(typeof globalThis!=="undefined"?globalThis:this);

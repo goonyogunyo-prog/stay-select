@@ -1,0 +1,15 @@
+"use strict";
+(function(){
+const $=id=>document.getElementById(id);
+let records=[],matches=[];
+function normalize(s){return String(s||'').normalize('NFKC').toLowerCase().replace(/[\s・　\-―ー（）()「」【】/.,]/g,'').replace(/ホテル|旅館|民宿|温泉|the/g,'');}
+function similarity(a,b){if(!a||!b)return 0;if(a===b)return 1;if(a.includes(b)||b.includes(a))return .88;const dp=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){let prev=dp[0];dp[0]=i;for(let j=1;j<=b.length;j++){const old=dp[j];dp[j]=Math.min(dp[j]+1,dp[j-1]+1,prev+(a[i-1]===b[j-1]?0:1));prev=old;}}return Math.max(0,1-dp[b.length]/Math.max(a.length,b.length));}
+function rank(name,pref,items){const n=normalize(name);return items.filter(x=>x.pref===pref).map(x=>({id:x.id,name:x.name,pref:x.pref,score:similarity(n,normalize(x.name))})).filter(x=>x.score>=.36).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name,'ja')).slice(0,25);}
+function escapeCsv(s){return '"'+String(s??'').replace(/"/g,'""')+'"';}
+function csvText(rows){return '\ufeff'+[['ID','既存施設名','都道府県','類似度（参考）','判定'],...rows.map(x=>[x.id,x.name,x.pref,Math.round(x.score*100)+'%','要公式確認'])].map(r=>r.map(escapeCsv).join(',')).join('\r\n')+'\r\n';}
+function show(rows){const target=$('results');target.replaceChildren();for(const x of rows){const card=document.createElement('article');card.className='match';const h=document.createElement('h2');h.textContent=x.name;const p=document.createElement('p');p.textContent=x.pref+' ・ ID '+x.id+' ・ 名称類似度 '+Math.round(x.score*100)+'%（参考）';card.append(h,p);target.appendChild(card);} $('status').textContent=rows.length?rows.length+'件の候補を表示。所在地・運営元の確認が必要です。':'名称の類似候補は見つかりませんでした。別名・所在地・電話での確認は引き続き必要です。';$('csv').disabled=!rows.length;}
+$('form').addEventListener('submit',e=>{e.preventDefault();if(!records.length){$('status').textContent='施設データの読み込みが完了していません。';return;}matches=rank($('name').value,$('pref').value,records);show(matches);});
+$('csv').addEventListener('click',()=>{if(!matches.length)return;const blob=new Blob([csvText(matches)],{type:'text/csv;charset=utf-8'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download='stay-duplicate-review.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);});
+fetch('data/stays.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}).then(j=>{if(!Array.isArray(j.stays))throw Error('data shape');records=j.stays;for(const p of [...new Set(records.map(x=>x.pref))].sort((a,b)=>a.localeCompare(b,'ja'))){const opt=document.createElement('option');opt.value=p;opt.textContent=p;$('pref').appendChild(opt);} $('status').textContent=records.length.toLocaleString('ja-JP')+'施設を読み込みました。';}).catch(()=>{$('status').textContent='施設データを読み込めませんでした。GitHub Pages上で開いて再試行してください。';});
+if(typeof module!=='undefined'&&module.exports)module.exports={normalize,similarity,rank,csvText};
+})();

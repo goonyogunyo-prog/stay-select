@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>GitHub-only 安全復元ガイド｜STAY SELECT</title>
+<link rel="stylesheet" href="assets/stay-github-recovery.css"></head>
+<body><main><nav><a href="index.html">← STAY SELECT</a> ／ <a href="stay-safe-deploy-plan.html">GitHub差分照合</a></nav>
+<p class="eyebrow">EDITOR WORKBENCH · NO AUTO DEPLOY</p><h1>GitHub-onlyファイルの安全な復元</h1>
+<p class="notice"><strong>このページと付属スクリプトはGitHubへ書き込みません。</strong>GitHub mainにしかないファイルを累積ZIPへ追記し、同名で内容が異なるファイルは旧ZIPのバイトを守って競合として報告します。mainへのZIP一括上書きは禁止です。</p>
+<section><h2>今回の基準</h2><dl><dt>施設数</dt><dd>12,267（旧JSON全レコード維持）</dd><dt>起点ZIP</dt><dd>2026-10-31 22:22 JST・1,890ファイル</dd><dt>main HEAD（監査時）</dt><dd><code>88979175bd151bdba6949c517f0e50c653eb053e</code></dd><dt>前回GitHub-only残</dt><dd>247件（全path再照合前の暫定値）</dd><dt>同名SHA競合</dt><dd>4件（自動上書き禁止）</dd></dl></section>
+<section><h2>使い方</h2><ol><li>GitHub main HEADを再確認し、作業開始・終了で同一であることを確認する。</li>
+<li>そのHEADに固定した<a href="https://api.github.com/repos/goonyogunyo-prog/stay-select/git/trees/88979175bd151bdba6949c517f0e50c653eb053e?recursive=1" target="_blank" rel="noopener noreferrer">recursive tree JSON</a>と<a href="https://github.com/goonyogunyo-prog/stay-select/archive/88979175bd151bdba6949c517f0e50c653eb053e.zip" target="_blank" rel="noopener noreferrer">GitHubコミットZIP</a>を取得する。HEADが変わった場合は両方を新HEADで取り直す。</li>
+<li>累積ZIPと旧manifestを用意し、<a href="tools/merge_github_only_safe.py" download>オフライン復元スクリプト</a>をPython 3で実行する。</li>
+<li>CSVのGitHub-only、同名競合、ZIP-onlyをレビューする。競合がある場合、既定では新ZIPを出力せず停止する。</li>
+<li>競合を旧ZIP側で保全する必要がある場合のみ、明示フラグを付けて新ZIPを作成。<strong>出力できても公開承認ではない。</strong></li></ol>
+<pre><code>python tools/merge_github_only_safe.py \
+  --local cumulative.zip \
+  --github-zip github-pinned.zip \
+  --tree github-tree.json \
+  --head 88979175bd151bdba6949c517f0e50c653eb053e \
+  --manifest old-manifest.txt \
+  --output merged-review.zip \
+  --report github-recovery-report.csv \
+  --status github-recovery-status.json</code></pre>
+<p>競合を保全したまま出力する場合に限り、末尾に <code>--preserve-local-conflicts</code> を付けます。GitHub側の1,258 blobはアーカイブ内の実バイトとGit blob SHAで全件照合します。取得漏れ、SHA不一致、危険なパス、旧manifest不一致は停止します。</p></section>
+<section><h2>公開前の必須確認</h2><p>差分CSVを人手レビューし、特に <code>data/stays.json</code>、<code>index.html</code>、<code>new-arrivals.html</code>、<code>sitemap.xml</code> の競合を個別にマージしてください。楽天照合JSON・33成果URL・旧12,267施設JSONのバイトを変えないこと。未照合施設に予約CTAを追加しないこと。</p></section>
+<footer>料金・空室・営業・設備は未検証。楽天検索URLは個別予約URLではありません。GitHubへの書込機能はありません。</footer></main></body></html>

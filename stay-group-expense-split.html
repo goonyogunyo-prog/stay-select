@@ -1,0 +1,4 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>宿泊グループ費用精算メモ | STAY SELECT</title><link rel="stylesheet" href="stay-group-expense-split.css"><main><h1>宿泊グループ費用精算メモ</h1><p>宿泊・交通・食事などの立替金を人数で均等に割り、誰が誰にいくら渡すかを計算します。入力は端末内でのみ処理されます。</p><label>参加者（1行1名）<textarea id="people" rows="5" placeholder="あおい
+はる
+ゆう"></textarea></label><label>立替記録（1行に 支払者,金額,内容）<textarea id="expenses" rows="6" placeholder="あおい,24000,宿泊
+はる,6000,交通"></textarea></label><button id="calculate">精算を計算</button><button id="copy">結果をコピー</button><pre id="result" aria-live="polite"></pre><p class="note">全員で均等負担する支出のみ対応。個別負担や端数の取り決めは別途確認してください。</p></main><script src="stay-group-expense-split.js"></script></html>
