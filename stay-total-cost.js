@@ -1,0 +1,13 @@
+(()=>{'use strict';
+function integer(value,label){const n=Number(value);if(!Number.isFinite(n)||n<0||!Number.isInteger(n)||n>100000000)throw Error(label+'は0以上の整数で入力してください');return n}
+function positive(value,label){const n=integer(value,label);if(n<1||n>365)throw Error(label+'は1〜365で入力してください');return n}
+function estimate(v){const nights=positive(v.nights,'泊数'),persons=positive(v.persons,'人数'),rooms=positive(v.rooms,'部屋数');if(persons>100||rooms>50)throw Error('人数・部屋数を確認してください');
+const room=integer(v.room,'1室1泊の料金'),tax=integer(v.tax,'1人1泊の宿泊税等'),clean=integer(v.clean,'清掃料'),meal=integer(v.meal,'1人1泊の食事代'),transport=integer(v.transport,'交通費合計'),other=integer(v.other,'その他追加費用');
+const roomTotal=room*rooms*nights,taxTotal=tax*persons*nights,mealTotal=meal*persons*nights,total=roomTotal+taxTotal+mealTotal+clean+transport+other;
+if(!Number.isSafeInteger(total))throw Error('金額が大きすぎます');return {nights,persons,rooms,roomTotal,taxTotal,mealTotal,clean,transport,other,total,perPerson:Math.floor(total/persons),remainder:total%persons}}
+window.STAY_TOTAL_COST={estimate};
+const $=id=>document.getElementById(id),fmt=n=>n.toLocaleString('ja-JP')+'円';
+function render(){try{const v={};['nights','persons','rooms','room','tax','clean','meal','transport','other'].forEach(k=>v[k]=$(k).value);const r=estimate(v);$('result').textContent='旅行総額の試算 '+fmt(r.total)+'／1人あたり '+fmt(r.perPerson)+'（端数 '+r.remainder+'円）';$('breakdown').textContent=`宿泊費 ${fmt(r.roomTotal)}／手入力の税等 ${fmt(r.taxTotal)}／食事 ${fmt(r.mealTotal)}／清掃 ${fmt(r.clean)}／交通 ${fmt(r.transport)}／その他 ${fmt(r.other)}`;$('error').textContent='';window.STAY_TOTAL_COST.last=r}catch(e){$('error').textContent=e.message;$('result').textContent='';$('breakdown').textContent='';window.STAY_TOTAL_COST.last=null}}
+function save(){const r=window.STAY_TOTAL_COST.last;if(!r)return;const data=[['項目','金額'],['宿泊費',r.roomTotal],['宿泊税等（手入力）',r.taxTotal],['食事',r.mealTotal],['清掃料',r.clean],['交通費',r.transport],['その他',r.other],['総額',r.total],['人数',r.persons],['1人あたり（切捨て）',r.perPerson],['余り（円）',r.remainder]].map(a=>a.join(',')).join('\r\n');const url=URL.createObjectURL(new Blob(['\ufeff'+data],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='stay-total-cost.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+if(typeof document!=='undefined'){document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('input').forEach(e=>e.addEventListener('input',render));$('export').addEventListener('click',save);render()})}
+})();
