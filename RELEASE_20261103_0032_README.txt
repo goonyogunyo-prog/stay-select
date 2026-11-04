@@ -1,0 +1,1 @@
+STAY SELECT 2026-11-03 00:32 JST. Base 13042/2561 SHA256 50108be5ef76f128795dfbe7ffa9ac75111b60ad78804ef17ea87b11db29689f; new 38; final 13080/2574; official 5 bodies; no business hotels; new feature stay-group-car-seats-planner. GitHub main unchanged.

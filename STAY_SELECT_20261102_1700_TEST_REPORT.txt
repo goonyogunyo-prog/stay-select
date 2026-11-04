@@ -1,0 +1,6 @@
+STAY SELECT 2026-11-02 17:00 JST
+起点全2464ファイル: CRC32/bytes/SHA256/Git blob SHA1 / manifest照合PASS。
+新規38施設、旧12765施設レコードの原文・値・順序を維持。
+GitHub main HEAD/tree指紋一致、GitHub-only不足0、競合4未マージ、未公開。
+Node JS syntax/VM機能テスト、ローカルHTTPの結果は別途FINAL_CHECKS.json参照。
+本番HTTP・楽天成果計測・施設営業/設備/料金/空室は未検証。

@@ -1,0 +1,11 @@
+STAY SELECT 20261103_0330 SAFE CUMULATIVE RELEASE
+Absolute baseline: STAY_SELECT_20261103_0224_CUMULATIVE_13090_STAYS_OFFICIAL_5_TRASH_BAG_GITHUB_4_CONFLICTS_2600.zip
+Baseline SHA256: d994641586acdddec1f8f1ead29271b3c654c87e5bf626aece588e3425e81bff
+Baseline: 13090 stays / 2600 files; all 2600 CRC/bytes/SHA256/Git blob SHA1 verified.
+New stays: 11 (target 38, shortfall 27), business hotels 0.
+New feature: stay-late-checkout-cost-planner.html/css/js; local-only, CSV, no reservation, no external data transfer.
+Changed existing files: data/stays.json, index.html, new-arrivals.html, sitemap.xml.
+New files: 13 (feature 3, archive 4, management 6). Deleted 0.
+GitHub-only restored 252 preserved. Four GitHub conflicts remain unresolved. Do not overwrite main.
+Rakuten individual URLs previously verified 33 preserved. Unmatched 13068 search URLs only. No booking CTA.
+No live pricing/availability/operations/equipment checks. July 2026 Shodoshima PDF full text still unavailable.

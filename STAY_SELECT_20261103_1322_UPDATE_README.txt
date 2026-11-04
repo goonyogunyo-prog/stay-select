@@ -1,0 +1,1 @@
+2026-11-03 13:22 JST safe cumulative update. Original 2703 files unchanged. Added offline packing checklist HTML/CSS/JS and this README. No facility added; 38 target unmet. GitHub not published. Four conflicts not merged. Existing Rakuten data preserved byte for byte.

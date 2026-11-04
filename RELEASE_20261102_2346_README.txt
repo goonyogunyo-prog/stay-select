@@ -1,0 +1,1 @@
+STAY SELECT 2026-11-02 23:46 JST; base 13004/2548 SHA256 69d3dfaef51bec61380a08390763b432332cbda3ba55e41e62a357edc31f951f; new 38; final 13042/2561; source five bodies; no business hotels; new feature stay-water-tank-duration. GitHub main unchanged.

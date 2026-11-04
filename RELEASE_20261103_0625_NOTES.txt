@@ -1,0 +1,8 @@
+STAY SELECT 2026-11-03 06:25 JST 安全累積更新
+起点: STAY_SELECT_20261103_0518_CUMULATIVE_13145_STAYS_OFFICIAL_6_ELEVATOR_FIT_GITHUB_4_CONFLICTS_2639.zip SHA256=5316ad39ca07dc014b04a01ac27506c9d541f3ae69172dc501e139ce652c5461
+起点全2639ファイル CRC/bytes/SHA256/Git blob SHA1とmanifest照合PASS。
+公式5団体から新規23施設。38目標に15件不足。累積13168施設。新規ビジネスホテル0。
+旧13145施設JSONレコードの原文バイト・値・順序保持。
+新機能: stay-early-departure-breakfast-check.html/css/js 早朝出発に朝食が間に合うか2施設比較、CSV保存、端末内処理。
+楽天未照合施設は検索URLのみ。成果33件とrakuten-matches.json不変。
+GitHub競合4件未マージ、main上書きなし。営業・料金・空室・設備・楽天成果計測・本番動作未検証。

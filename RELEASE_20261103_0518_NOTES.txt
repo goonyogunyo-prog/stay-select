@@ -1,0 +1,8 @@
+STAY SELECT 2026-11-03 05:18 JST 安全累積更新
+起点: STAY_SELECT_20261103_0423_CUMULATIVE_13139_STAYS_OFFICIAL_38_REMOTE_DATA_GITHUB_4_CONFLICTS_2626.zip SHA256=b438c70212432a85ea621bbecc06fb949312e57c2af40b73baeb00cd9848be87
+起点全2626ファイル監査 PASS。累積13139施設から新規6施設（島根県旅館ホテル生活衛生同業組合）、合計13145施設。目標38件に32不足。
+同県正規化・包含・高類似重複0、新規ビジネスホテル0。旧13139施設JSON原文バイト、値、順序維持。
+新機能: stay-elevator-luggage-fit.html/css/js 2施設のエレベーター扉幅・かご内寸と荷物カート矩形寸法を比較。CSV。端末内処理。安全性保証なし。
+既存成果URL33件と data/rakuten-matches.json 不変。未照合は検索URLのみ、予約CTAなし。
+GitHub main競合4件は未マージ、main一括上書き禁止。全GitHub-only復元済ファイル維持。
+本番公開・料金・空室・営業・設備・楽天成果計測は未検証。

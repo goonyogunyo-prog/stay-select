@@ -1,0 +1,9 @@
+STAY SELECT 2026-11-03 04:23 JST 安全累積差分
+絶対起点: STAY_SELECT_20261103_0330_CUMULATIVE_13101_STAYS_OFFICIAL_11_LATE_CHECKOUT_GITHUB_4_CONFLICTS_2613.zip / SHA256=3d9d70feca93e168ccb4a9b84f2e0a19063c8a09e95d0290e35c51e06a53e380
+起点: 13,101施設/2,613サイトファイル、全件CRC/bytes/SHA256/Git blob SHA1と監査CSV/manifest照合PASS
+公式5団体から北海道38施設を追加、ビジネスホテル0、同県正規化・包含・高類似重複0
+新機能: stay-remote-work-data-budget.html / .css / .js（宿泊先のリモートワーク通信量とモバイル予備容量2案比較・CSV・端末内処理）
+変更4: data/stays.json,index.html,new-arrivals.html,sitemap.xml。変更前はarchive-20261103-0423に全バイト保全。
+既存未公開ファイル・GitHub-only復元累計252件・data/rakuten-matches.json・既存33成果URL全バイト保全。
+GitHub main HEAD=88979175bd151bdba6949c517f0e50c653eb053e, recursive tree 1268 entries/1258 blobs, FNV1a32=1522b89e, 1254一致/不足0/競合4。競合は未マージ。main一括上書き禁止、GitHub未公開。
+営業・空室・料金・設備・本番HTTP・成果計測は未検証。
